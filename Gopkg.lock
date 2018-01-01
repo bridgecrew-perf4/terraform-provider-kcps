@@ -50,6 +50,12 @@
   version = "v3.5.1"
 
 [[projects]]
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
+
+[[projects]]
   name = "github.com/go-ini/ini"
   packages = ["."]
   revision = "32e4c1e6bc4e7d0d8451aa6b75200d19e37a536a"
@@ -128,8 +134,14 @@
   revision = "fa9f258a92500514cc8e9c67020487709df92432"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/hashicorp/logutils"
+  packages = ["."]
+  revision = "0dc08b1671f34c4250ce212759ebd880f743d883"
+
+[[projects]]
   name = "github.com/hashicorp/terraform"
-  packages = ["config","config/configschema","config/hcl2shim","config/module","dag","flatmap","helper/hashcode","helper/hilmapstructure","helper/mutexkv","helper/schema","moduledeps","plugin","plugin/discovery","registry/regsrc","registry/response","svchost","svchost/auth","svchost/disco","terraform","tfdiags","version"]
+  packages = ["config","config/configschema","config/hcl2shim","config/module","dag","flatmap","helper/config","helper/hashcode","helper/hilmapstructure","helper/logging","helper/mutexkv","helper/resource","helper/schema","moduledeps","plugin","plugin/discovery","registry/regsrc","registry/response","svchost","svchost/auth","svchost/disco","terraform","tfdiags","version"]
   revision = "a42fdb08a43c7fabb8898fe8c286b793bbaa4835"
   version = "v0.11.1"
 
@@ -267,6 +279,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e2d904d06121f19f43c6e75c8d262dbfff7d153563b43373047a3bf62fb41631"
+  inputs-digest = "4180231ab79ac6066b83c1c27a34613ce5dc48f1a86d3963a1cb466b3c714387"
   solver-name = "gps-cdcl"
   solver-version = 1

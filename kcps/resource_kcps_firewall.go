@@ -112,12 +112,13 @@ func resourceKcpsFirewallCreate(d *schema.ResourceData, meta interface{}) error 
 	}
 
 	prefixIcmp := "icmp.0."
-	if icmptype, ok := d.GetOk(prefixIcmp + "icmptype"); ok {
+	if icmptype, ok := d.GetOkExists(prefixIcmp + "icmptype"); ok {
 		p.SetIcmptype(icmptype.(int))
 	}
-	if icmpcode, ok := d.GetOk(prefixIcmp + "icmpcode"); ok {
+	if icmpcode, ok := d.GetOkExists(prefixIcmp + "icmpcode"); ok {
 		p.SetIcmpcode(icmpcode.(int))
 	}
+
 	r, err := cli.Firewall.CreateFirewallRule(p)
 	if err != nil {
 		return fmt.Errorf("Error creating Firewall Rule: %s", err)

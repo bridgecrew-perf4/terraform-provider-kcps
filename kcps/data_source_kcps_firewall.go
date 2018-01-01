@@ -127,7 +127,7 @@ func dataSourceKcpsFirewallRead(d *schema.ResourceData, meta interface{}) error 
 	return nil
 }
 
-//gokcps: 'cidrlist' is not []string but string
+//'cidrlist' of the respponse is string. not []string.
 func expandCidrFirewall(fw *gk.FirewallRule) []string {
 	var result []string
 	clist := strings.Split(fw.Cidrlist, ",")
