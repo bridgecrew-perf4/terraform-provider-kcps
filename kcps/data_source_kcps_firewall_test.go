@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
-	"strings"
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
@@ -25,7 +24,7 @@ func TestAccDataSourceKcpsFirewall(t *testing.T) {
 			{
 				Config: testAccDataSourceKcpsFirewallConfig(),
 				Check: resource.ComposeTestCheckFunc(
-					testAccCheckDataSourceKCPSFirewall(),
+					testAccCheckDataSourceKcpsFirewall(),
 				),
 			},
 
@@ -64,7 +63,7 @@ func testAccCheckKcpsFirewallDestroy(s *terraform.State) error {
 	return nil
 }
 
-func testAccCheckDataSourceKCPSFirewall() resource.TestCheckFunc {
+func testAccCheckDataSourceKcpsFirewall() resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 		dsFullName := "data.kcps_firewall.a"
 		rsFullName := "kcps_firewall.a"
@@ -85,11 +84,12 @@ func testAccCheckDataSourceKCPSFirewall() resource.TestCheckFunc {
 			"id",
 			"ipaddressid",
 			"ipaddress",
+			"protocol",
 		}
 
 		for _, attrToTest := range attrsToTest {
 			if dsAttrs[attrToTest] != rsAttrs[attrToTest] {
-				return fmt.Errorf("expected %s, but received %s", attrToTest, dsAttrs[attrToTest], rsAttrs[attrToTest])
+				return fmt.Errorf("'%s': expected %s, got %s", attrToTest, rsAttrs[attrToTest], dsAttrs[attrToTest])
 			}
 		}
 
@@ -115,7 +115,7 @@ func testAccCheckDataSourceKCPSFirewall() resource.TestCheckFunc {
 
 		if dsNoOfCidrlist != rsNoOfCidrlist {
 			return fmt.Errorf(
-				"expected %d number of cidr, but received %d",
+				"expected %d number of cidr, got %d",
 				rsNoOfCidrlist,
 				dsNoOfCidrlist,
 			)
@@ -128,22 +128,33 @@ func testAccCheckDataSourceKCPSFirewall() resource.TestCheckFunc {
 		}
 		if dsFirewallId != rsAttrs["id"] {
 			return fmt.Errorf(
-				"expected %d , but received %d",
+				"'firewall_id': expected %d , but received %d",
 				rsAttrs["id"],
 				dsFirewallId,
 			)
 		}
 
-		//protocol check
-		dsProtocol, ok := dsAttrs["protocol"]
+		//port check
+		dsStartPort, ok := dsAttrs["startport"]
 		if !ok {
-			return errors.New("can't find 'protocol' attribute in data source")
+			return errors.New("can't find 'startport' attribute in data source")
 		}
-		if strings.ToUpper(dsProtocol) != rsAttrs["protocol"] {
+		dsEndPort, ok := dsAttrs["endport"]
+		if !ok {
+			return errors.New("can't find 'endport' attribute in data source")
+		}
+		if dsStartPort != rsAttrs["port.0.startport"] {
 			return fmt.Errorf(
-				"expected %d , but received %d",
-				rsAttrs["protocol"],
-				strings.ToUpper(dsProtocol),
+				"'startport': expected %s , got %s",
+				rsAttrs["port.0.startport"],
+				dsStartPort,
+			)
+		}
+		if dsEndPort != rsAttrs["port.0.endport"] {
+			return fmt.Errorf(
+				"'endport': expected %s , got %s",
+				rsAttrs["port.0.endport"],
+				dsEndPort,
 			)
 		}
 
@@ -155,7 +166,7 @@ func testAccDataSourceKcpsFirewallConfig() string {
 	return fmt.Sprintf(`
 		resource kcps_firewall "a" {
 			ipaddressid = "4c9e186e-9227-42a4-b14c-38ed7f32b012"
-			protocol = "TCP"
+			protocol = "tcp"
 			cidrlist = ["1.1.1.1/32", "2.2.2.2/32"]
 			port {
 				startport = 1020
@@ -172,7 +183,7 @@ func testAccDataSourceKcpsFirewallConfig_ICMP(icmpcode, icmptype string) string 
 	return fmt.Sprintf(`
 		resource kcps_firewall "a" {
 			ipaddressid = "4c9e186e-9227-42a4-b14c-38ed7f32b012"
-			protocol = "ICMP"
+			protocol = "icmp"
 			cidrlist = ["3.3.3.3/32", "4.4.4.4/32"]
 			icmp {
 				icmpcode = %s

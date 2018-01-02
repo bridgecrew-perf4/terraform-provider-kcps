@@ -27,7 +27,7 @@ func resourceKcpsFirewall() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
-				ValidateFunc: validateProtocol([]string{"TCP", "UDP", "ICMP"}),
+				ValidateFunc: validateProtocol([]string{"tcp", "udp", "icmp"}),
 			},
 
 			"cidrlist": {

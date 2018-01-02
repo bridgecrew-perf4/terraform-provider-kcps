@@ -34,10 +34,12 @@ func dataSourceKcpsPublicIP() *schema.Resource {
 			"issourcenat": {
 				Type:     schema.TypeBool,
 				Optional: true,
+				Computed: true,
 			},
 			"isstaticnat": {
 				Type:     schema.TypeBool,
 				Optional: true,
+				Computed: true,
 			},
 			"keyword": {
 				Type:     schema.TypeString,
@@ -73,6 +75,10 @@ func dataSourceKcpsPublicIP() *schema.Resource {
 				Computed: true,
 			},
 			"virtualmachineid": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
+			"vmipaddress": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
@@ -134,10 +140,13 @@ func dataSourceKcpsPublicIPRead(d *schema.ResourceData, meta interface{}) error 
 	d.Set("ipaddress", v.Ipaddress)
 	d.Set("zoneid", v.Zoneid)
 	d.Set("tags", flattenTags(v.Tags))
+	d.Set("issourcenat", v.Issourcenat)
+	d.Set("isstaticnat", v.Isstaticnat)
 
 	d.Set("networkid", v.Networkid)
 	d.Set("associatednetworkid", v.Associatednetworkid)
 	d.Set("virtualmachineid", v.Virtualmachineid)
+	d.Set("vmipaddress", v.Vmipaddress)
 	d.SetId(v.Id)
 
 	return nil

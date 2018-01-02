@@ -54,7 +54,11 @@ func resourceKcpsPublicIP() *schema.Resource {
 func resourceKcpsPublicIPCreate(d *schema.ResourceData, meta interface{}) error {
 	cli := meta.(*gk.KCPSClient)
 
-	p := cli.Nic.NewAssociateIpAddressParams(d.Get("networkid").(string))
+	networkid := d.Get("networkid").(string)
+	mutexKV.Lock("publicip-" + networkid)
+	defer mutexKV.Unlock("publicip-" + networkid)
+
+	p := cli.Nic.NewAssociateIpAddressParams(networkid)
 	r, err := cli.Nic.AssociateIpAddress(p)
 
 	if err != nil {
@@ -173,6 +177,10 @@ func resourceKcpsPublicIPUpdate(d *schema.ResourceData, meta interface{}) error 
 
 func resourceKcpsPublicIPDelete(d *schema.ResourceData, meta interface{}) error {
 	cli := meta.(*gk.KCPSClient)
+
+	networkid := d.Get("networkid").(string)
+	mutexKV.Lock("publicip-" + networkid)
+	defer mutexKV.Unlock("publicip-" + networkid)
 
 	p := cli.Nic.NewDisassociateIpAddressParams(d.Id())
 	_, err := cli.Nic.DisassociateIpAddress(p)

@@ -27,7 +27,7 @@ func resourceKcpsNatPortForward() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
-				ValidateFunc: validateProtocol([]string{"TCP", "UDP"}),
+				ValidateFunc: validateProtocol([]string{"tcp", "udp"}),
 			},
 
 			"port": {

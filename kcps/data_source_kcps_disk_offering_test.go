@@ -34,18 +34,18 @@ func TestAccDataSourceKcpsDiskOffering(t *testing.T) {
 	})
 }
 
-func testAccDataSourceKcpsDiskOfferingConfig_byId(v string) string {
+func testAccDataSourceKcpsDiskOfferingConfig_byId(diskOfferingId string) string {
 	return fmt.Sprintf(`
 		data "kcps_disk_offering" "a" {
 			diskoffering_id = "%s"
 		}
-		`, v)
+		`, diskOfferingId)
 }
 
-func testAccDataSourceKcpsDiskOfferingConfig_byName(v string) string {
+func testAccDataSourceKcpsDiskOfferingConfig_byName(name string) string {
 	return fmt.Sprintf(`
 		data "kcps_disk_offering" "a" {
 			name = "%s"
 		}
-		`, v)
+		`, name)
 }
