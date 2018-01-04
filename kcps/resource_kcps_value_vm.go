@@ -2,6 +2,7 @@ package kcps
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	gk "github.com/uesyn/gokcps"
@@ -39,13 +40,14 @@ func resourceKcpsValueVM() *schema.Resource {
 				ForceNew:     true,
 				ValidateFunc: validateZoneId(),
 			},
-			/* gokcpsでVMware以外のhypervisorを設定できるようになった場合
+			/* if gokcps is able to set other of VMware
 			"hypervisor": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: validateHypervisor(),
 			},
 			*/
+			//not support
 			"iptonetworklist": {
 				Type:     schema.TypeList,
 				Optional: true, //Required: true (if gokcps doesn't set PublicFrontSegment as default)
@@ -199,7 +201,7 @@ func resourceKcpsValueVMRead(d *schema.ResourceData, meta interface{}) error {
 //iptonetworklistのUpdate未実装。NicのAPI叩く必要あり
 func resourceKcpsValueVMUpdate(d *schema.ResourceData, meta interface{}) error {
 	// Enable partial state mode
-	d.Partial(true)
+	//d.Partial(true)
 
 	/*
 		if d.HasChange("iptonetworklist") {
@@ -225,7 +227,7 @@ func resourceKcpsValueVMUpdate(d *schema.ResourceData, meta interface{}) error {
 
 	// We succeeded, disable partial mode. This causes Terraform to save
 	// save all fields again.
-	d.Partial(false)
+	//d.Partial(false)
 
 	return resourceKcpsValueVMRead(d, meta)
 }
@@ -243,6 +245,22 @@ func resourceKcpsValueVMDelete(d *schema.ResourceData, meta interface{}) error {
 
 	if err != nil {
 		return fmt.Errorf("Error destroying Value Virtual Machine: %s", err)
+	}
+
+	// check completely deleted (I don't want to do this...)
+	for {
+
+		p := cli.VirtualMachine.NewListVirtualMachinesParams()
+		p.SetId(d.Id())
+		r, err := cli.VirtualMachine.ListVirtualMachines(p)
+		if err != nil {
+			return fmt.Errorf("Error getting Value Virtual Machines list: %s", err)
+		}
+		if r.VirtualMachines == nil {
+			break
+		}
+
+		time.Sleep(7 * time.Second)
 	}
 
 	d.SetId("")

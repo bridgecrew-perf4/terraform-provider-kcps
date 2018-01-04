@@ -76,54 +76,56 @@ func testAccCheckDataSourceKcpsPublicIP_StaticNAT() resource.TestCheckFunc {
 		dsAttrs := ds.Primary.Attributes
 		rsAttrs := rs.Primary.Attributes
 
-		attrsToTest := []string{
+		attrNames := []string{
 			"id",
 			"ipaddress",
 		}
 
-		for _, attrToTest := range attrsToTest {
-			if dsAttrs[attrToTest] != rsAttrs[attrToTest] {
-				return fmt.Errorf("'%s': expected %s, got %s", attrToTest, rsAttrs[attrToTest], dsAttrs[attrToTest])
+		for _, attrName := range attrNames {
+			dsAttr, ok := dsAttrs[attrName]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", attrName)
+			}
+			rsAttr, ok := rsAttrs[attrName]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", attrName)
+			}
+
+			if dsAttr != rsAttr {
+				return fmt.Errorf("'%s': expected %s, got %s", attrName, rsAttr, dsAttr)
 			}
 		}
 
-		//id check
-		dsPublicIpId, _ := dsAttrs["publicip_id"]
-		if dsPublicIpId != rsAttrs["id"] {
-			return fmt.Errorf(
-				"expected %d , but received %d", rsAttrs["id"], dsPublicIpId,
-			)
-		}
-
-		//networkid check ('networkid' of Data Source is different from networkid' of Resource)
-		dsAssociatedNetworkId, _ := dsAttrs["associatednetworkid"]
-		if dsAssociatedNetworkId != rsAttrs["networkid"] {
-			return fmt.Errorf(
-				"expected %d , but received %d", rsAttrs["networkid"], dsAssociatedNetworkId,
-			)
-		}
-
-		//check data source only attributes
-		attrName := []string{
+		//check other attributes
+		dsAttrNames := []string{
+			"publicip_id",
 			"issourcenat",
 			"isstaticnat",
 			"zoneid",
 			"networkid",
+			"associatednetworkid",
 		}
 		dsCertainValues := []string{
+			rsAttrs["id"],
 			"false",
 			"true",
 			"593697b6-c123-4025-b412-ef83822733e5",
 			"8594fb24-2cdf-41ed-9290-60f32b6ee0db",
+			rsAttrs["networkid"],
 		}
 
-		for i, _ := range attrName {
-			if dsAttrs[attrName[i]] != dsCertainValues[i] {
+		for i, _ := range dsAttrNames {
+			dsAttr, ok := dsAttrs[dsAttrNames[i]]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", dsAttrNames[i])
+			}
+
+			if dsAttr != dsCertainValues[i] {
 				return fmt.Errorf(
 					"'%s': expected %s , but received %s",
-					attrName[i],
+					dsAttrNames[i],
 					dsCertainValues[i],
-					dsAttrs[attrName[i]],
+					dsAttr,
 				)
 			}
 		}

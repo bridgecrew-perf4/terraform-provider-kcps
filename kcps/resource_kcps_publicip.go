@@ -23,7 +23,6 @@ func resourceKcpsPublicIP() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 			},
-
 			//enableStaticNat
 			"staticnat": {
 				Type:     schema.TypeList,

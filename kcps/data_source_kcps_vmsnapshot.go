@@ -17,7 +17,10 @@ func dataSourceKcpsVMSnapshot() *schema.Resource {
 				Optional: true,
 				Computed: true,
 			},
-			"name": {
+			//this parameter plays exactly the same role as request parameter 'name'
+			//the description of the request parameter 'name' is "lists snapshot by snapshot name or display name"
+			//but it correspondes 'displayname' only
+			"displayname": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
@@ -33,10 +36,13 @@ func dataSourceKcpsVMSnapshot() *schema.Resource {
 				Computed: true,
 			},
 
-			"zoneid": {
-				Type:     schema.TypeString,
-				Computed: true,
-			},
+			//KCPS doesn't return this parameter (API reference mistake)
+			/*
+				"zoneid": {
+					Type:     schema.TypeString,
+					Computed: true,
+				},
+			*/
 		},
 	}
 }
@@ -70,7 +76,7 @@ func dataSourceKcpsVMSnapshotRead(d *schema.ResourceData, meta interface{}) erro
 	v := r.VMSnapshot[0]
 
 	d.Set("vmsnapshot_id", v.Id)
-	d.Set("name", v.Name)
+	d.Set("displayname", v.Displayname)
 	d.Set("state", v.State)
 	d.Set("virtualmachineid", v.Virtualmachineid)
 

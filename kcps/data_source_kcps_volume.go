@@ -65,15 +65,7 @@ func dataSourceKcpsVolume() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"hypervisor": {
-				Type:     schema.TypeString,
-				Computed: true,
-			},
 			"serviceofferingid": {
-				Type:     schema.TypeString,
-				Computed: true,
-			},
-			"templateid": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
@@ -134,9 +126,7 @@ func dataSourceKcpsVolumeRead(d *schema.ResourceData, meta interface{}) error {
 	d.Set("tags", flattenTags(v.Tags))
 
 	d.Set("diskofferingid", v.Diskofferingid)
-	d.Set("hypervisor", v.Hypervisor)
 	d.Set("serviceofferingid", v.Serviceofferingid)
-	d.Set("templateid", v.Templateid)
 
 	d.SetId(v.Id)
 

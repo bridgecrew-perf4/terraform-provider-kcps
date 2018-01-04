@@ -30,6 +30,10 @@ func resourceKcpsSnapshotCreate(d *schema.ResourceData, meta interface{}) error 
 	cli := meta.(*gk.KCPSClient)
 
 	volumeid := d.Get("volumeid").(string)
+
+	mutexKV.Lock("snapshot-" + volumeid)
+	defer mutexKV.Unlock("snapshot-" + volumeid)
+
 	p := cli.Snapshot.NewCreateSnapshotParams(volumeid)
 
 	r, err := cli.Snapshot.CreateSnapshot(p)
@@ -67,6 +71,11 @@ func resourceKcpsSnapshotRead(d *schema.ResourceData, meta interface{}) error {
 
 func resourceKcpsSnapshotDelete(d *schema.ResourceData, meta interface{}) error {
 	cli := meta.(*gk.KCPSClient)
+
+	volumeid := d.Get("volumeid").(string)
+
+	mutexKV.Lock("snapshot-" + volumeid)
+	defer mutexKV.Unlock("snapshot-" + volumeid)
 
 	p := cli.Snapshot.NewDeleteSnapshotParams(d.Id())
 	_, err := cli.Snapshot.DeleteSnapshot(p)

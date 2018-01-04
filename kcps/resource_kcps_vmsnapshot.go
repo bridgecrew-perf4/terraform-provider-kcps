@@ -22,7 +22,9 @@ func resourceKcpsVMSnapshot() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 			},
-			"name": {
+			//this parameter plays exactly the same role as request parameter 'name'
+			//at the response, the parameter 'name' has different meaning
+			"displayname": {
 				Type:     schema.TypeString,
 				Optional: true,
 				ForceNew: true,
@@ -44,8 +46,8 @@ func resourceKcpsVMSnapshotCreate(d *schema.ResourceData, meta interface{}) erro
 	virtualmachineid := d.Get("virtualmachineid").(string)
 	p := cli.Snapshot.NewCreateVMSnapshotParams(virtualmachineid)
 
-	if name, ok := d.GetOk("name"); ok {
-		p.SetName(name.(string))
+	if displayname, ok := d.GetOk("displayname"); ok {
+		p.SetName(displayname.(string))
 	}
 
 	r, err := cli.Snapshot.CreateVMSnapshot(p)

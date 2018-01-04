@@ -76,8 +76,8 @@ func dataSourceKcpsTemplate() *schema.Resource {
 				Type:     schema.TypeBool,
 				Computed: true,
 			},
-			"ostypename": {
-				Type:     schema.TypeString,
+			"passwordenabled": {
+				Type:     schema.TypeBool,
 				Computed: true,
 			},
 			"ostypeid": {
@@ -128,13 +128,15 @@ func dataSourceKcpsTemplateRead(d *schema.ResourceData, meta interface{}) error 
 
 	v := r.Templates[0]
 
+	d.Set("name", v.Name)
+	d.Set("zoneid", v.Zoneid)
+
 	d.Set("template_id", v.Id)
 	d.Set("displaytext", v.Displaytext)
 	d.Set("format", v.Format)
 	d.Set("hypervisor", v.Hypervisor)
 	d.Set("isdynamicallyscalable", v.Isdynamicallyscalable)
 	d.Set("ispublic", v.Ispublic)
-	d.Set("ostypename", v.Ostypename)
 	d.Set("ostypeid", v.Ostypeid)
 	d.Set("passwordenabled", v.Passwordenabled)
 	d.Set("tags", flattenTags(v.Tags))

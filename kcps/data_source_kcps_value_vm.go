@@ -72,42 +72,6 @@ func dataSourceKcpsValueVM() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"nic": {
-				Type:     schema.TypeList,
-				Computed: true,
-				Elem: &schema.Resource{
-					Schema: map[string]*schema.Schema{
-						"gateway": {
-							Type:     schema.TypeString,
-							Computed: true,
-						},
-						"nicid": {
-							Type:     schema.TypeString,
-							Computed: true,
-						},
-						"ip6address": {
-							Type:     schema.TypeString,
-							Computed: true,
-						},
-						"ip6gateway": {
-							Type:     schema.TypeString,
-							Computed: true,
-						},
-						"ipaddress": {
-							Type:     schema.TypeString,
-							Computed: true,
-						},
-						"macaddress": {
-							Type:     schema.TypeString,
-							Computed: true,
-						},
-						"networkid": {
-							Type:     schema.TypeString,
-							Computed: true,
-						},
-					},
-				},
-			},
 			"publicip": {
 				Type:     schema.TypeString,
 				Computed: true,
@@ -182,7 +146,6 @@ func dataSourceKcpsValueVMRead(d *schema.ResourceData, meta interface{}) error {
 
 	d.Set("diskofferingid", v.Diskofferingid)
 	d.Set("hypervisor", v.Hypervisor)
-	d.Set("nic", flattenNicVM(v))
 	d.Set("publicip", v.Publicip)
 	d.Set("publicipid", v.Publicipid)
 	d.Set("serviceofferingid", v.Serviceofferingid)
@@ -192,21 +155,4 @@ func dataSourceKcpsValueVMRead(d *schema.ResourceData, meta interface{}) error {
 
 	return nil
 
-}
-
-func flattenNicVM(vm *gk.VirtualMachine) []map[string]interface{} {
-	result := make([]map[string]interface{}, 0, len(vm.Nics))
-	for _, n := range vm.Nics {
-		nicMap := make(map[string]interface{})
-		nicMap["gateway"] = n.Gateway
-		nicMap["nicid"] = n.Id
-		nicMap["ip6address"] = n.Ip6address
-		nicMap["ip6gateway"] = n.Ip6gateway
-		nicMap["ipaddress"] = n.Ipaddress
-		nicMap["macaddress"] = n.Macaddress
-		nicMap["networkid"] = n.Networkid
-
-		result = append(result, nicMap)
-	}
-	return result
 }

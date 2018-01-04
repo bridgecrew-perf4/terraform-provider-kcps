@@ -80,19 +80,29 @@ func testAccCheckDataSourceKcpsFirewall() resource.TestCheckFunc {
 		dsAttrs := ds.Primary.Attributes
 		rsAttrs := rs.Primary.Attributes
 
-		attrsToTest := []string{
+		attrNames := []string{
 			"id",
 			"ipaddressid",
 			"ipaddress",
 			"protocol",
 		}
 
-		for _, attrToTest := range attrsToTest {
-			if dsAttrs[attrToTest] != rsAttrs[attrToTest] {
-				return fmt.Errorf("'%s': expected %s, got %s", attrToTest, rsAttrs[attrToTest], dsAttrs[attrToTest])
+		for _, attrName := range attrNames {
+			dsAttr, ok := dsAttrs[attrName]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", attrName)
+			}
+			rsAttr, ok := rsAttrs[attrName]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", attrName)
+			}
+
+			if dsAttr != rsAttr {
+				return fmt.Errorf("'%s': expected %s, got %s", attrName, rsAttr, dsAttr)
 			}
 		}
 
+		//cidrlist check
 		dsCidrlistCount, ok := dsAttrs["cidrlist.#"]
 		if !ok {
 			return errors.New("can't find 'cidrlist' attribute in data source")
@@ -100,7 +110,7 @@ func testAccCheckDataSourceKcpsFirewall() resource.TestCheckFunc {
 
 		dsNoOfCidrlist, err := strconv.Atoi(dsCidrlistCount)
 		if err != nil {
-			return errors.New("failed to read number of cidr in data source")
+			return errors.New("failed to read number of cidrlist in data source")
 		}
 
 		rsCidrlistCount, ok := rsAttrs["cidrlist.#"]
@@ -110,52 +120,43 @@ func testAccCheckDataSourceKcpsFirewall() resource.TestCheckFunc {
 
 		rsNoOfCidrlist, err := strconv.Atoi(rsCidrlistCount)
 		if err != nil {
-			return errors.New("failed to read number of cidr in resource")
+			return errors.New("failed to read number of cidrlist in resource")
 		}
 
 		if dsNoOfCidrlist != rsNoOfCidrlist {
 			return fmt.Errorf(
-				"expected %d number of cidr, got %d",
+				"expected %d number of cidrlist, got %d",
 				rsNoOfCidrlist,
 				dsNoOfCidrlist,
 			)
 		}
 
-		//id check
-		dsFirewallId, ok := dsAttrs["firewall_id"]
-		if !ok {
-			return errors.New("can't find 'firewall_id' attribute in data source")
+		//other attributes check
+		dsAttrNames := []string{
+			"firewall_id",
+			"startport",
+			"endport",
 		}
-		if dsFirewallId != rsAttrs["id"] {
-			return fmt.Errorf(
-				"'firewall_id': expected %d , but received %d",
-				rsAttrs["id"],
-				dsFirewallId,
-			)
+		dsCertainValues := []string{
+			rsAttrs["id"],
+			rsAttrs["port.0.startport"],
+			rsAttrs["port.0.endport"],
 		}
 
-		//port check
-		dsStartPort, ok := dsAttrs["startport"]
-		if !ok {
-			return errors.New("can't find 'startport' attribute in data source")
-		}
-		dsEndPort, ok := dsAttrs["endport"]
-		if !ok {
-			return errors.New("can't find 'endport' attribute in data source")
-		}
-		if dsStartPort != rsAttrs["port.0.startport"] {
-			return fmt.Errorf(
-				"'startport': expected %s , got %s",
-				rsAttrs["port.0.startport"],
-				dsStartPort,
-			)
-		}
-		if dsEndPort != rsAttrs["port.0.endport"] {
-			return fmt.Errorf(
-				"'endport': expected %s , got %s",
-				rsAttrs["port.0.endport"],
-				dsEndPort,
-			)
+		for i, _ := range dsAttrNames {
+			dsAttr, ok := dsAttrs[dsAttrNames[i]]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", dsAttrNames[i])
+			}
+
+			if dsAttr != dsCertainValues[i] {
+				return fmt.Errorf(
+					"'%s': expected %s , but received %s",
+					dsAttrNames[i],
+					dsCertainValues[i],
+					dsAttr,
+				)
+			}
 		}
 
 		return nil

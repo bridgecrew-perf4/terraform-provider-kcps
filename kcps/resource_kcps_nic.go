@@ -47,6 +47,9 @@ func resourceKcpsNicCreate(d *schema.ResourceData, meta interface{}) error {
 	networkid := d.Get("networkid").(string)
 	virtualmachineid := d.Get("virtualmachineid").(string)
 
+	mutexKV.Lock("nic-" + networkid + virtualmachineid)
+	defer mutexKV.Unlock("nic-" + networkid + virtualmachineid)
+
 	p := cli.Nic.NewAddNicToVirtualMachineParams(networkid, virtualmachineid)
 	r, err := cli.Nic.AddNicToVirtualMachine(p)
 
@@ -189,6 +192,12 @@ func resourceKcpsNicUpdate(d *schema.ResourceData, meta interface{}) error {
 
 func resourceKcpsNicDelete(d *schema.ResourceData, meta interface{}) error {
 	cli := meta.(*gk.KCPSClient)
+
+	networkid := d.Get("networkid").(string)
+	virtualmachineid := d.Get("virtualmachineid").(string)
+
+	mutexKV.Lock("nic-" + networkid + virtualmachineid)
+	defer mutexKV.Unlock("nic-" + networkid + virtualmachineid)
 
 	p := cli.Nic.NewRemoveNicFromVirtualMachineParams(d.Id(), d.Get("virtualmachineid").(string))
 	_, err := cli.Nic.RemoveNicFromVirtualMachine(p)

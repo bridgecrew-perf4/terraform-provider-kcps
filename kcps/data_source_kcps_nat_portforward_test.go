@@ -1,7 +1,6 @@
 package kcps
 
 import (
-	"errors"
 	"fmt"
 	"testing"
 
@@ -68,7 +67,7 @@ func testAccCheckDataSourceKcpsNatPortForward() resource.TestCheckFunc {
 		dsAttrs := ds.Primary.Attributes
 		rsAttrs := rs.Primary.Attributes
 
-		attrsToTest := []string{
+		attrNames := []string{
 			"id",
 			"ipaddressid",
 			"ipaddress",
@@ -77,52 +76,53 @@ func testAccCheckDataSourceKcpsNatPortForward() resource.TestCheckFunc {
 			"vmguestip",
 		}
 
-		for _, attrToTest := range attrsToTest {
-			if dsAttrs[attrToTest] != rsAttrs[attrToTest] {
-				return fmt.Errorf("'%s': expected %s, got %s", attrToTest, rsAttrs[attrToTest], dsAttrs[attrToTest])
+		for _, attrName := range attrNames {
+			dsAttr, ok := dsAttrs[attrName]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", attrName)
+			}
+			rsAttr, ok := rsAttrs[attrName]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", attrName)
+			}
+
+			if dsAttr != rsAttr {
+				return fmt.Errorf("'%s': expected %s, got %s", attrName, rsAttr, dsAttr)
 			}
 		}
 
-		//id check
-		dsNatPortForwardId, ok := dsAttrs["natportforward_id"]
-		if !ok {
-			return errors.New("can't find 'natportforward_id' attribute in data source")
+		//other attributes check
+		dsAttrNames := []string{
+			"natportforward_id",
+			"privateport",
+			"privateendport",
+			"publicport",
+			"publicendport",
+			"networkid",
 		}
-		if dsNatPortForwardId != rsAttrs["id"] {
-			return fmt.Errorf(
-				"'natportforward_id': expected %s , but received %s",
-				rsAttrs["id"],
-				dsNatPortForwardId,
-			)
-		}
-
-		//port check
-		rsPorts := []string{
+		dsCertainValues := []string{
+			rsAttrs["id"],
 			rsAttrs["port.0.privateport"],
 			rsAttrs["port.0.privateendport"],
 			rsAttrs["port.0.publicport"],
 			rsAttrs["port.0.publicendport"],
-		}
-		dsPorts := []string{
-			dsAttrs["privateport"],
-			dsAttrs["privateendport"],
-			dsAttrs["publicport"],
-			dsAttrs["publicendport"],
-		}
-		for i, _ := range dsPorts {
-			if dsPorts[i] != rsPorts[i] {
-				return fmt.Errorf(
-					"expected port %s , but received %s", rsPorts[i], dsPorts[i],
-				)
-			}
+			"7b921a2d-8c82-4016-bbd0-cf0dd6877408",
 		}
 
-		//check data source only attributes
-		trueNetworkId := "7b921a2d-8c82-4016-bbd0-cf0dd6877408"
-		if dsAttrs["networkid"] != trueNetworkId {
-			return fmt.Errorf(
-				"'networkid': expected %s , but received %s", trueNetworkId, dsAttrs["networkid"],
-			)
+		for i, _ := range dsAttrNames {
+			dsAttr, ok := dsAttrs[dsAttrNames[i]]
+			if !ok {
+				return fmt.Errorf("can't find '%s' attribute in data source", dsAttrNames[i])
+			}
+
+			if dsAttr != dsCertainValues[i] {
+				return fmt.Errorf(
+					"'%s': expected %s , but received %s",
+					dsAttrNames[i],
+					dsCertainValues[i],
+					dsAttr,
+				)
+			}
 		}
 
 		return nil

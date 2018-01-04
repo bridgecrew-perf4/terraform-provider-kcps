@@ -26,6 +26,12 @@ func dataSourceKcpsSnapshot() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
+			//KCPS doesn't return this parameter (API reference mistake)
+			"zoneid": {
+				Type:     schema.TypeString,
+				Optional: true,
+				//Computed: true,
+			},
 			"name": {
 				Type:     schema.TypeString,
 				Optional: true,
@@ -51,11 +57,6 @@ func dataSourceKcpsSnapshot() *schema.Resource {
 				},
 			},
 			"volumeid": {
-				Type:     schema.TypeString,
-				Optional: true,
-				Computed: true,
-			},
-			"zoneid": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
@@ -114,7 +115,6 @@ func dataSourceKcpsSnapshotRead(d *schema.ResourceData, meta interface{}) error 
 	d.Set("tags", flattenTags(v.Tags))
 
 	d.Set("volumeid", v.Volumeid)
-	d.Set("zoneid", v.Zoneid)
 	d.SetId(v.Id)
 
 	return nil
