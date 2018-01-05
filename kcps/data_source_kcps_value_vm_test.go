@@ -12,9 +12,9 @@ import (
 func TestAccDataSourceKcpsValueVM(t *testing.T) {
 
 	resource.Test(t, resource.TestCase{
-		PreCheck:  func() { testAccPreCheck(t) },
-		Providers: testAccProviders,
-		//CheckDestroy: testAccCheckKcpsValueVMDestroy,
+		PreCheck:     func() { testAccPreCheck(t) },
+		Providers:    testAccProviders,
+		CheckDestroy: testAccCheckKcpsValueVMDestroy,
 		Steps: []resource.TestStep{
 
 			{
