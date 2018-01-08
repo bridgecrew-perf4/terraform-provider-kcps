@@ -75,11 +75,64 @@
     <a class="current" href="./">Value VM</a>
     <ul class="subnav">
             
+    <li class="toctree-l4"><a href="#value-virtualmachine">Value VirtualMachine</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_1">使用例</a></li>
+        
+            <li><a class="toctree-l5" href="#_2">注意事項</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">パラメータ</a></li>
+        
+            <li><a class="toctree-l5" href="#diskoffering">diskoffering</a></li>
+        
+            <li><a class="toctree-l5" href="#_4">属性</a></li>
+        
+        </ul>
+    
+
     </ul>
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../volume/">Volume</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../template/">Template</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../snapshot/">Snapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vmsnapshot/">VMSnapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../snapshot_policy/">Snapshot Policy</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../publicip/">Public IP</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../firewall/">Firewall</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../nat_portforward/">NAT/PortForward</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../loadbalancer/">LoadBalancer</a>
                 </li>
     </ul>
                 </li>
@@ -140,7 +193,136 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="value-virtualmachine">Value VirtualMachine</h1>
+<h2 id="_1">使用例</h2>
+<pre><code class="hcl">resource kcps_value_vm &quot;my_vm&quot; {
+    name              = &quot;my_vm&quot;
+    serviceofferingid = &quot;e3060950-1b4f-4adb-b050-bbe99694da19&quot; 
+    templateid        = &quot;0eb72664-f7ad-4d36-be3e-4f4c32ffe0e5&quot;
+    zoneid            = &quot;593697b6-c123-4025-b412-ef83822733e5&quot;
+
+    diskoffering{
+        diskofferingid = &quot;10cc47d1-2e04-4aeb-aec9-fb08d273198e&quot;
+        size           = 100
+    }
+}
+</code></pre>
+
+<h2 id="_2">注意事項</h2>
+<p>作成したVMはKCPSの内部ネットワーク<code>PublicFrontSegment</code>と<code>MonitoringNetwork</code>に自動的に接続されます。</p>
+<h2 id="_3">パラメータ</h2>
+<table>
+<thead>
+<tr>
+<th align="left">パラメータ名</th>
+<th align="left">必須</th>
+<th align="left">説明</th>
+<th align="left">初期値</th>
+<th align="left">タイプ</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>name</code></td>
+<td align="left">◯</td>
+<td align="left">VMの名前</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>serviceofferingid</code></td>
+<td align="left">◯</td>
+<td align="left">サービスオファリングのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>templateid</code></td>
+<td align="left">◯</td>
+<td align="left">テンプレートのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>zoneid</code></td>
+<td align="left">◯</td>
+<td align="left">ゾーンのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>diskoffering</code></td>
+<td align="left">-</td>
+<td align="left">ディスクオファリング</td>
+<td align="left">-</td>
+<td align="left">list(map)</td>
+<td align="left">詳細は後述</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diskoffering">diskoffering</h2>
+<table>
+<thead>
+<tr>
+<th align="left">パラメータ名</th>
+<th align="left">必須</th>
+<th align="left">説明</th>
+<th align="left">初期値</th>
+<th align="left">タイプ</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>diskofferingid</code></td>
+<td align="left">◯</td>
+<td align="left">ディスクオファリングのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>size</code></td>
+<td align="left">◯</td>
+<td align="left">ディスクのサイズ</td>
+<td align="left">-</td>
+<td align="left">int</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">属性</h2>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">説明</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">リソースID</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>password</code></td>
+<td align="left">VMのパスワード</td>
+<td align="left">設定されているならば取得できます</td>
+</tr>
+<tr>
+<td align="left"><code>publicip</code></td>
+<td align="left">StaticNATルールを使用してVMに関連付けられたパブリックIPアドレスのID</td>
+<td align="left">StaticNATを有効化する必要があります</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -148,7 +330,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../nic/" class="btn btn-neutral float-right" title="Nic">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../volume/" class="btn btn-neutral float-right" title="Volume">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../provider/" class="btn btn-neutral" title="Provider"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -182,7 +364,7 @@
         <span><a href="../../provider/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../nic/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../volume/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

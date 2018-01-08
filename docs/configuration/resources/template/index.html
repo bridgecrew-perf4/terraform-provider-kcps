@@ -8,7 +8,7 @@
   
   <meta name="author" content="@ezoiwana">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>Value VM - terraform-provider-kcps</title>
+  <title>Template - terraform-provider-kcps</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Value VM";
-    var mkdocs_page_input_path = "configuration/data_sources/value_vm.md";
-    var mkdocs_page_url = "/configuration/data_sources/value_vm/";
+    var mkdocs_page_name = "Template";
+    var mkdocs_page_input_path = "configuration/resources/template.md";
+    var mkdocs_page_url = "/configuration/resources/template/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -66,70 +66,83 @@
                     
     <a class="" href="../../provider/">Provider</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
     <span class="caption-text">Resources</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
-    <a class="" href="../../resources/value_vm/">Value VM</a>
+    <a class="" href="../value_vm/">Value VM</a>
                 </li>
                 <li class="toctree-l3">
                     
-    <a class="" href="../../resources/volume/">Volume</a>
+    <a class="" href="../volume/">Volume</a>
                 </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/template/">Template</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/snapshot/">Snapshot</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/vmsnapshot/">VMSnapshot</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/snapshot_policy/">Snapshot Policy</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/nic/">Nic</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/publicip/">Public IP</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/firewall/">Firewall</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/nat_portforward/">NAT/PortForward</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/loadbalancer/">LoadBalancer</a>
-                </li>
-    </ul>
-                </li>
-                <li class=" current">
-                    
-    <span class="caption-text">Data Sources</span>
-    <ul class="subnav">
                 <li class="toctree-l3 current">
                     
-    <a class="current" href="./">Value VM</a>
+    <a class="current" href="./">Template</a>
     <ul class="subnav">
             
+    <li class="toctree-l4"><a href="#template">Template</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_1">使用例</a></li>
+        
+            <li><a class="toctree-l5" href="#_2">パラメータ</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">属性</a></li>
+        
+        </ul>
+    
+
     </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../snapshot/">Snapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vmsnapshot/">VMSnapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../snapshot_policy/">Snapshot Policy</a>
                 </li>
                 <li class="toctree-l3">
                     
     <a class="" href="../nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../publicip/">Public IP</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../firewall/">Firewall</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../nat_portforward/">NAT/PortForward</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../loadbalancer/">LoadBalancer</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Data Sources</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/value_vm/">Value VM</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/nic/">Nic</a>
                 </li>
     </ul>
                 </li>
@@ -162,11 +175,11 @@
         
       
         
-          <li>Data Sources &raquo;</li>
+          <li>Resources &raquo;</li>
         
       
     
-    <li>Value VM</li>
+    <li>Template</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -176,7 +189,120 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="template">Template</h1>
+<h2 id="_1">使用例</h2>
+<pre><code class="hcl">resource kcps_template &quot;my_template&quot; {
+    name                  = &quot;my_template&quot;
+    displaytext           = &quot;test desu&quot;
+    ostypeid              = &quot;817437d2-7aae-11e4-b5b5-c45444131635&quot;
+    snapshotid            = &quot;a48081bd-aa4d-48f3-a53a-75ef960c0bec&quot;
+
+    isdynamicallyscalable = true
+    passwordenabled       = true
+    ispublic              = true
+
+    #volumeid = &quot;453983a0-5c2e-4645-9468-5e7e63ebf045&quot; 
+}
+
+</code></pre>
+
+<h2 id="_2">パラメータ</h2>
+<table>
+<thead>
+<tr>
+<th align="left">パラメータ名</th>
+<th align="left">必須</th>
+<th align="left">説明</th>
+<th align="left">初期値</th>
+<th align="left">タイプ</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>name</code></td>
+<td align="left">◯</td>
+<td align="left">テンプレートの名前</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>displaytext</code></td>
+<td align="left">◯</td>
+<td align="left">使用目的の記述</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>ostypeid</code></td>
+<td align="left">◯</td>
+<td align="left">OSタイプのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>snapshotid</code></td>
+<td align="left">注1</td>
+<td align="left">テンプレート作成に使用するスナップショットのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>volumeid</code></td>
+<td align="left">注1</td>
+<td align="left">テンプレート作成に使用するボリュームのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>isdynamicallyscalable</code></td>
+<td align="left">-</td>
+<td align="left">動的スケーリング</td>
+<td align="left">false</td>
+<td align="left">bool</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>passwordenabled</code></td>
+<td align="left">-</td>
+<td align="left">パスワード有効化</td>
+<td align="left">false</td>
+<td align="left">bool</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>ispublic</code></td>
+<td align="left">-</td>
+<td align="left">公開レベル</td>
+<td align="left">false</td>
+<td align="left">bool</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p>注1: <code>snapshotid</code>か<code>volumeid</code>のどちらかを設定する必要がある。</p>
+<h2 id="_3">属性</h2>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">説明</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">リソースID</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -184,10 +310,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../nic/" class="btn btn-neutral float-right" title="Nic">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../snapshot/" class="btn btn-neutral float-right" title="Snapshot">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../resources/loadbalancer/" class="btn btn-neutral" title="LoadBalancer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../volume/" class="btn btn-neutral" title="Volume"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -215,10 +341,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../resources/loadbalancer/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../volume/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../nic/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../snapshot/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

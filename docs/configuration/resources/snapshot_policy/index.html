@@ -8,7 +8,7 @@
   
   <meta name="author" content="@ezoiwana">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>Value VM - terraform-provider-kcps</title>
+  <title>Snapshot Policy - terraform-provider-kcps</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Value VM";
-    var mkdocs_page_input_path = "configuration/data_sources/value_vm.md";
-    var mkdocs_page_url = "/configuration/data_sources/value_vm/";
+    var mkdocs_page_name = "Snapshot Policy";
+    var mkdocs_page_input_path = "configuration/resources/snapshot_policy.md";
+    var mkdocs_page_url = "/configuration/resources/snapshot_policy/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -66,70 +66,85 @@
                     
     <a class="" href="../../provider/">Provider</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
     <span class="caption-text">Resources</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
-    <a class="" href="../../resources/value_vm/">Value VM</a>
+    <a class="" href="../value_vm/">Value VM</a>
                 </li>
                 <li class="toctree-l3">
                     
-    <a class="" href="../../resources/volume/">Volume</a>
+    <a class="" href="../volume/">Volume</a>
                 </li>
                 <li class="toctree-l3">
                     
-    <a class="" href="../../resources/template/">Template</a>
+    <a class="" href="../template/">Template</a>
                 </li>
                 <li class="toctree-l3">
                     
-    <a class="" href="../../resources/snapshot/">Snapshot</a>
+    <a class="" href="../snapshot/">Snapshot</a>
                 </li>
                 <li class="toctree-l3">
                     
-    <a class="" href="../../resources/vmsnapshot/">VMSnapshot</a>
+    <a class="" href="../vmsnapshot/">VMSnapshot</a>
                 </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/snapshot_policy/">Snapshot Policy</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/nic/">Nic</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/publicip/">Public IP</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/firewall/">Firewall</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/nat_portforward/">NAT/PortForward</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../resources/loadbalancer/">LoadBalancer</a>
-                </li>
-    </ul>
-                </li>
-                <li class=" current">
-                    
-    <span class="caption-text">Data Sources</span>
-    <ul class="subnav">
                 <li class="toctree-l3 current">
                     
-    <a class="current" href="./">Value VM</a>
+    <a class="current" href="./">Snapshot Policy</a>
     <ul class="subnav">
             
+    <li class="toctree-l4"><a href="#snapshot-policy">Snapshot Policy</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_1">使用例</a></li>
+        
+            <li><a class="toctree-l5" href="#_2">パラメータ</a></li>
+        
+            <li><a class="toctree-l5" href="#schedule">scheduleのフォーマット</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">属性</a></li>
+        
+        </ul>
+    
+
     </ul>
                 </li>
                 <li class="toctree-l3">
                     
     <a class="" href="../nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../publicip/">Public IP</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../firewall/">Firewall</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../nat_portforward/">NAT/PortForward</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../loadbalancer/">LoadBalancer</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Data Sources</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/value_vm/">Value VM</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/nic/">Nic</a>
                 </li>
     </ul>
                 </li>
@@ -162,11 +177,11 @@
         
       
         
-          <li>Data Sources &raquo;</li>
+          <li>Resources &raquo;</li>
         
       
     
-    <li>Value VM</li>
+    <li>Snapshot Policy</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -176,7 +191,117 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="snapshot-policy">Snapshot Policy</h1>
+<h2 id="_1">使用例</h2>
+<pre><code class="hcl">resource kcps_snapshot_policy &quot;my_snapshot_policy&quot;{
+    intervaltype = &quot;WEEKLY&quot;
+    maxsnaps     = 3
+    schedule     = &quot;10:10:6&quot;
+    timezone     = &quot;JST&quot;
+    volumeid     = &quot;2eaf5912-78a5-41ef-825f-9f4558511450&quot;
+}
+</code></pre>
+
+<h2 id="_2">パラメータ</h2>
+<table>
+<thead>
+<tr>
+<th align="left">パラメータ名</th>
+<th align="left">必須</th>
+<th align="left">説明</th>
+<th align="left">初期値</th>
+<th align="left">タイプ</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>intervaltype</code></td>
+<td align="left">◯</td>
+<td align="left">スナップショットを作成する間隔</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">DAILY、WEEKLY、MONTHLYの内のどれか</td>
+</tr>
+<tr>
+<td align="left"><code>maxsnaps</code></td>
+<td align="left">◯</td>
+<td align="left">スナップショットをいくつ保持するか</td>
+<td align="left">-</td>
+<td align="left">int</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>schedule</code></td>
+<td align="left">◯</td>
+<td align="left">スナップショットを作成する時間</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">フォーマットについては後述</td>
+</tr>
+<tr>
+<td align="left"><code>timezone</code></td>
+<td align="left">◯</td>
+<td align="left">タイムゾーン</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>volumeid</code></td>
+<td align="left">◯</td>
+<td align="left">スナップショット作成に使用するボリュームのID</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="schedule">scheduleのフォーマット</h2>
+<p><code>intervaltype</code>によってフォーマットが変化します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">intervaltype</th>
+<th align="left">scheduleのフォーマット</th>
+<th align="left">DDについて</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">DAILY</td>
+<td align="left">MM:HH*</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">WEEKLY</td>
+<td align="left">MM:HH:DD</td>
+<td align="left">WEEKLYのDDは曜日を示す(日曜～土曜：1～7)</td>
+</tr>
+<tr>
+<td align="left">MONTHLY</td>
+<td align="left">MM:HH:DD</td>
+<td align="left">MONTHLYのDDは日付(1～31)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">属性</h2>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">説明</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">リソースID</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -187,7 +312,7 @@
         <a href="../nic/" class="btn btn-neutral float-right" title="Nic">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../resources/loadbalancer/" class="btn btn-neutral" title="LoadBalancer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vmsnapshot/" class="btn btn-neutral" title="VMSnapshot"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -215,7 +340,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../resources/loadbalancer/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../vmsnapshot/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../nic/" style="color: #fcfcfc">Next &raquo;</a></span>

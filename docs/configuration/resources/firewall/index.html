@@ -8,7 +8,7 @@
   
   <meta name="author" content="@ezoiwana">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>Nic - terraform-provider-kcps</title>
+  <title>Firewall - terraform-provider-kcps</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Nic";
-    var mkdocs_page_input_path = "configuration/resources/nic.md";
-    var mkdocs_page_url = "/configuration/resources/nic/";
+    var mkdocs_page_name = "Firewall";
+    var mkdocs_page_input_path = "configuration/resources/firewall.md";
+    var mkdocs_page_url = "/configuration/resources/firewall/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -94,12 +94,20 @@
                     
     <a class="" href="../snapshot_policy/">Snapshot Policy</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../publicip/">Public IP</a>
+                </li>
                 <li class="toctree-l3 current">
                     
-    <a class="current" href="./">Nic</a>
+    <a class="current" href="./">Firewall</a>
     <ul class="subnav">
             
-    <li class="toctree-l4"><a href="#nic">Nic</a></li>
+    <li class="toctree-l4"><a href="#firewall">Firewall</a></li>
     
         <ul>
         
@@ -107,20 +115,16 @@
         
             <li><a class="toctree-l5" href="#_2">パラメータ</a></li>
         
+            <li><a class="toctree-l5" href="#port">port</a></li>
+        
+            <li><a class="toctree-l5" href="#icmp">icmp</a></li>
+        
             <li><a class="toctree-l5" href="#_3">属性</a></li>
         
         </ul>
     
 
     </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../publicip/">Public IP</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../firewall/">Firewall</a>
                 </li>
                 <li class="toctree-l3">
                     
@@ -179,7 +183,7 @@
         
       
     
-    <li>Nic</li>
+    <li>Firewall</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -189,13 +193,22 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="nic">Nic</h1>
+                <h1 id="firewall">Firewall</h1>
 <h2 id="_1">使用例</h2>
-<pre><code class="hcl">resource kcps_nic &quot;my_nic&quot;{
-    networkid           = &quot;d0f15c14-4d94-4a69-b39a-994721bfc809&quot;
-    virtualmachineid    = &quot;be4a143f-3cdd-4091-9a8c-d82c78e49ddf&quot;
+<pre><code class="hcl">resource kcps_firewall &quot;my_firewall&quot; {
+    ipaddressid = &quot;165bd632-738b-44e4-8449-562fcd6da509&quot;
+    protocol    = &quot;TCP&quot;
+    cidrlist    = [&quot;1.1.1.1/32&quot;, &quot;2.2.2.2/32&quot;] 
 
-    secondaryip         = [&quot;198.18.57.252&quot;,&quot;198.18.57.254&quot;]
+    port {
+        startport   = 1020
+        endport     = 1023
+    }
+
+    #icmp {
+    #    icmpcode = 0
+    #    icmptype = 3
+    #}
 }
 </code></pre>
 
@@ -213,27 +226,108 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>networkid</code></td>
+<td align="left"><code>ipaddressid</code></td>
 <td align="left">◯</td>
-<td align="left">ネットワークのID</td>
+<td align="left">Firewallルールを設定するIPアドレスのID</td>
 <td align="left">-</td>
 <td align="left">string</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left"><code>virtualmachineid</code></td>
+<td align="left"><code>protocol</code></td>
 <td align="left">◯</td>
-<td align="left">Nicを搭載させるVMのID</td>
+<td align="left">Firewallルールのプロトコル</td>
 <td align="left">-</td>
 <td align="left">string</td>
-<td align="left">-</td>
+<td align="left">TCP、UDP、ICMPの内のどれか</td>
 </tr>
 <tr>
-<td align="left"><code>secondaryip</code></td>
-<td align="left">-</td>
-<td align="left">Nicに割り当てるセカンダリーIP</td>
+<td align="left"><code>cidrlist</code></td>
+<td align="left">◯</td>
+<td align="left">Firewallで許可する送信元のCIDR</td>
 <td align="left">-</td>
 <td align="left">list(string)</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>port</code></td>
+<td align="left">注1 注2</td>
+<td align="left">許可するポートの範囲の設定</td>
+<td align="left">-</td>
+<td align="left">list(map)</td>
+<td align="left">詳細は後述</td>
+</tr>
+<tr>
+<td align="left"><code>icmp</code></td>
+<td align="left">注1 注3</td>
+<td align="left">拒否するICMPメッセージに関する設定</td>
+<td align="left">-</td>
+<td align="left">list(map)</td>
+<td align="left">詳細は後述</td>
+</tr>
+</tbody>
+</table>
+<p>注1: <code>port</code>か<code>icmp</code>どちらかを設定する必要があります。 <br>
+注2: <code>protocol="TCP"</code>または<code>protocol="UDP"</code>の場合に設定できます。 <br>
+注3: <code>protocol="ICMP"</code>の場合に設定できます。</p>
+<h2 id="port">port</h2>
+<table>
+<thead>
+<tr>
+<th align="left">パラメータ名</th>
+<th align="left">必須</th>
+<th align="left">説明</th>
+<th align="left">初期値</th>
+<th align="left">タイプ</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>startport</code></td>
+<td align="left">◯</td>
+<td align="left">開始ポート</td>
+<td align="left">-</td>
+<td align="left">int</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>endport</code></td>
+<td align="left">◯</td>
+<td align="left">終了ポート</td>
+<td align="left">-</td>
+<td align="left">int</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="icmp">icmp</h2>
+<table>
+<thead>
+<tr>
+<th align="left">パラメータ名</th>
+<th align="left">必須</th>
+<th align="left">説明</th>
+<th align="left">初期値</th>
+<th align="left">タイプ</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>icmpcode</code></td>
+<td align="left">◯</td>
+<td align="left">ICMPメッセージのコード</td>
+<td align="left">-</td>
+<td align="left">int</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>icmptype</code></td>
+<td align="left">◯</td>
+<td align="left">ICMPメッセージのタイプ</td>
+<td align="left">-</td>
+<td align="left">int</td>
 <td align="left">-</td>
 </tr>
 </tbody>
@@ -253,6 +347,11 @@
 <td align="left">リソースID</td>
 <td align="left">-</td>
 </tr>
+<tr>
+<td align="left"><code>ipaddress</code></td>
+<td align="left">IPアドレス</td>
+<td align="left">-</td>
+</tr>
 </tbody>
 </table>
               
@@ -262,10 +361,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../publicip/" class="btn btn-neutral float-right" title="Public IP">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../nat_portforward/" class="btn btn-neutral float-right" title="NAT/PortForward">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../snapshot_policy/" class="btn btn-neutral" title="Snapshot Policy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../publicip/" class="btn btn-neutral" title="Public IP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -293,10 +392,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../snapshot_policy/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../publicip/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../publicip/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../nat_portforward/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

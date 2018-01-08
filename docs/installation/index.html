@@ -58,6 +58,19 @@
     <a class="current" href="./">Install</a>
     <ul class="subnav">
             
+    <li class="toctree-l2"><a href="#installation">Installation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#1-terraform">1. Terraformのインストール</a></li>
+        
+            <li><a class="toctree-l3" href="#2-api">2. APIキーと秘密キーの取得</a></li>
+        
+            <li><a class="toctree-l3" href="#3-provider-plugin">3. Provider Pluginのインストール</a></li>
+        
+        </ul>
+    
+
     </ul>
 	    </li>
           
@@ -79,7 +92,43 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../configuration/resources/volume/">Volume</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/template/">Template</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/snapshot/">Snapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/vmsnapshot/">VMSnapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/snapshot_policy/">Snapshot Policy</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../configuration/resources/nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/publicip/">Public IP</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/firewall/">Firewall</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/nat_portforward/">NAT/PortForward</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/resources/loadbalancer/">LoadBalancer</a>
                 </li>
     </ul>
                 </li>
@@ -132,7 +181,26 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="installation">Installation</h1>
+<h2 id="1-terraform">1. Terraformのインストール</h2>
+<p>MacであればHomebrewでインストール可能です。</p>
+<pre><code class="sh">$ brew install terraform
+</code></pre>
+
+<h2 id="2-api">2. APIキーと秘密キーの取得</h2>
+<p>TerraformからKDDI Cloud Platform Serviceを操作するためには、APIを叩くのに使用する各種キーが必要です。</p>
+<p>KDDIクラウドプラットフォームナレッジサイトの<a href="https://iaas.cloud-platform.kddi.ne.jp/developer/api/cloud-stack-api/use/">API利用準備</a>を参考にして入手してください。</p>
+<h2 id="3-provider-plugin">3. Provider Pluginのインストール</h2>
+<p>Provider PluginはGoバイナリです。ソースコードからバイナリをビルドします。</p>
+<pre><code class="sh">$ git clone https://github.com/ezoiwana/terraform-provider-kcps
+$ go build
+</code></pre>
+
+<p><code>~/.terraformrc</code>にProvider Pluginのバイナリファイルまでのパスを設定し、プラグインの有効化を行います。以下のように編集してください。</p>
+<pre><code class="hcl">providers {
+    kcps = &quot;/path/to/terraform-provider-kcps&quot;
+}
+</code></pre>
               
             </div>
           </div>

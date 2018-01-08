@@ -1,0 +1,24 @@
+
+ 
+.wy-nav-content {
+    max-width: none;
+}
+
+.wy-side-nav-search {
+    background: #5C4EE5;
+}
+.wy-nav-side {
+    background: #222c32;
+}
+.rst-versions .rst-current-version {
+    background: #5C4EE5;
+}
+
+
+
+code {
+    font-size: 90%;
+}
+pre code {
+    font-size: 80%;
+}

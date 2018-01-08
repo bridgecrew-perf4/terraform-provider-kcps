@@ -13,7 +13,16 @@ pages:
     - Provider: configuration/provider.md
     - Resources:
       - Value VM: configuration/resources/value_vm.md
+      - Volume: configuration/resources/volume.md
+      - Template: configuration/resources/template.md
+      - Snapshot: configuration/resources/snapshot.md
+      - VMSnapshot: configuration/resources/vmsnapshot.md
+      - Snapshot Policy: configuration/resources/snapshot_policy.md
       - Nic: configuration/resources/nic.md
+      - Public IP: configuration/resources/publicip.md
+      - Firewall: configuration/resources/firewall.md
+      - NAT/PortForward: configuration/resources/nat_portforward.md
+      - LoadBalancer: configuration/resources/loadbalancer.md
     - Data Sources:
       - Value VM: configuration/data_sources/value_vm.md
       - Nic: configuration/data_sources/nic.md

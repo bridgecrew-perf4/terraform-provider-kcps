@@ -2,33 +2,368 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Terraform KDDI Cloud Platfotm Service Provider\n\n\nTerraform KDDI Cloud Platform Service Provider\u306f\nTerraform\n\u304b\u3089\nKDDI Cloud Platform Service\n\u3092\u64cd\u4f5c\u3059\u308b\u305f\u3081\u306eProvider Plugin\u3067\u3059\u3002", 
+            "text": "Terraform KDDI Cloud Platfotm Service Provider\n\n\nTerraform KDDI Cloud Platform Service Provider\u306f\nTerraform\n\u304b\u3089\nKDDI Cloud Platform Service(KCPS)\n\u3092\u64cd\u4f5c\u3059\u308b\u305f\u3081\u306eProvider Plugin\u3067\u3059\u3002\n\n\nKDDI\u975e\u516c\u5f0f\u3067\u3042\u308b\u305f\u3081\u3001\u304a\u554f\u3044\u5408\u308f\u305b\u3084\u3054\u8981\u671b\u306fKDDI\u69d8\u5b9b\u3067\u306f\u306a\u304f\u79c1\u500b\u4eba\u306e\nGi\bthub\u30ea\u30dd\u30b8\u30c8\u30ea\u306eissue\n\u3067\u304a\u9858\u3044\u3057\u307e\u3059\u3002", 
             "title": "Home"
         }, 
         {
             "location": "/#terraform-kddi-cloud-platfotm-service-provider", 
-            "text": "Terraform KDDI Cloud Platform Service Provider\u306f Terraform \u304b\u3089 KDDI Cloud Platform Service \u3092\u64cd\u4f5c\u3059\u308b\u305f\u3081\u306eProvider Plugin\u3067\u3059\u3002", 
+            "text": "Terraform KDDI Cloud Platform Service Provider\u306f Terraform \u304b\u3089 KDDI Cloud Platform Service(KCPS) \u3092\u64cd\u4f5c\u3059\u308b\u305f\u3081\u306eProvider Plugin\u3067\u3059\u3002  KDDI\u975e\u516c\u5f0f\u3067\u3042\u308b\u305f\u3081\u3001\u304a\u554f\u3044\u5408\u308f\u305b\u3084\u3054\u8981\u671b\u306fKDDI\u69d8\u5b9b\u3067\u306f\u306a\u304f\u79c1\u500b\u4eba\u306e Gi\bthub\u30ea\u30dd\u30b8\u30c8\u30ea\u306eissue \u3067\u304a\u9858\u3044\u3057\u307e\u3059\u3002", 
             "title": "Terraform KDDI Cloud Platfotm Service Provider"
         }, 
         {
             "location": "/installation/", 
-            "text": "", 
+            "text": "Installation\n\n\n1. Terraform\u306e\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\n\n\nMac\u3067\u3042\u308c\u3070Homebrew\u3067\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u53ef\u80fd\u3067\u3059\u3002\n\n\n$ brew install terraform\n\n\n\n\n2. API\u30ad\u30fc\u3068\u79d8\u5bc6\u30ad\u30fc\u306e\u53d6\u5f97\n\n\nTerraform\u304b\u3089KDDI Cloud Platform Service\u3092\u64cd\u4f5c\u3059\u308b\u305f\u3081\u306b\u306f\u3001\bAPI\b\u3092\u53e9\u304f\u306e\u306b\u4f7f\u7528\u3059\u308b\u5404\u7a2e\u30ad\u30fc\u304c\u5fc5\u8981\u3067\u3059\u3002\n\n\nKDDI\u30af\u30e9\u30a6\u30c9\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u30ca\u30ec\u30c3\u30b8\u30b5\u30a4\u30c8\u306e\nAPI\u5229\u7528\u6e96\u5099\n\u3092\u53c2\u8003\u306b\u3057\u3066\u5165\u624b\u3057\u3066\u304f\u3060\u3055\u3044\u3002\n\n\n3. Provider Plugin\u306e\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\n\n\nProvider Plugin\u306fGo\u30d0\u30a4\u30ca\u30ea\u3067\u3059\u3002\u30bd\u30fc\u30b9\u30b3\u30fc\u30c9\u304b\u3089\u30d0\u30a4\u30ca\u30ea\u3092\u30d3\u30eb\u30c9\u3057\u307e\u3059\u3002\n\n\n$ git clone https://github.com/ezoiwana/terraform-provider-kcps\n$ go build\n\n\n\n\n~/.terraformrc\n\u306bProvider Plugin\b\u306e\u30d0\u30a4\u30ca\u30ea\u30d5\u30a1\u30a4\u30eb\u307e\u3067\u306e\u30d1\u30b9\u3092\u8a2d\u5b9a\u3057\b\u3001\u30d7\u30e9\u30b0\u30a4\u30f3\u306e\u6709\u52b9\u5316\u3092\u884c\u3044\u307e\u3059\u3002\u4ee5\u4e0b\u306e\u3088\u3046\u306b\u7de8\u96c6\u3057\u3066\u304f\u3060\u3055\u3044\u3002\n\n\nproviders {\n    kcps = \n/path/to/terraform-provider-kcps\n\n}", 
             "title": "Install"
         }, 
         {
-            "location": "/configuration/provider/", 
+            "location": "/installation/#installation", 
             "text": "", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/installation/#1-terraform", 
+            "text": "Mac\u3067\u3042\u308c\u3070Homebrew\u3067\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u53ef\u80fd\u3067\u3059\u3002  $ brew install terraform", 
+            "title": "1. Terraform\u306e\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb"
+        }, 
+        {
+            "location": "/installation/#2-api", 
+            "text": "Terraform\u304b\u3089KDDI Cloud Platform Service\u3092\u64cd\u4f5c\u3059\u308b\u305f\u3081\u306b\u306f\u3001\bAPI\b\u3092\u53e9\u304f\u306e\u306b\u4f7f\u7528\u3059\u308b\u5404\u7a2e\u30ad\u30fc\u304c\u5fc5\u8981\u3067\u3059\u3002  KDDI\u30af\u30e9\u30a6\u30c9\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u30ca\u30ec\u30c3\u30b8\u30b5\u30a4\u30c8\u306e API\u5229\u7528\u6e96\u5099 \u3092\u53c2\u8003\u306b\u3057\u3066\u5165\u624b\u3057\u3066\u304f\u3060\u3055\u3044\u3002", 
+            "title": "2. API\u30ad\u30fc\u3068\u79d8\u5bc6\u30ad\u30fc\u306e\u53d6\u5f97"
+        }, 
+        {
+            "location": "/installation/#3-provider-plugin", 
+            "text": "Provider Plugin\u306fGo\u30d0\u30a4\u30ca\u30ea\u3067\u3059\u3002\u30bd\u30fc\u30b9\u30b3\u30fc\u30c9\u304b\u3089\u30d0\u30a4\u30ca\u30ea\u3092\u30d3\u30eb\u30c9\u3057\u307e\u3059\u3002  $ git clone https://github.com/ezoiwana/terraform-provider-kcps\n$ go build  ~/.terraformrc \u306bProvider Plugin\b\u306e\u30d0\u30a4\u30ca\u30ea\u30d5\u30a1\u30a4\u30eb\u307e\u3067\u306e\u30d1\u30b9\u3092\u8a2d\u5b9a\u3057\b\u3001\u30d7\u30e9\u30b0\u30a4\u30f3\u306e\u6709\u52b9\u5316\u3092\u884c\u3044\u307e\u3059\u3002\u4ee5\u4e0b\u306e\u3088\u3046\u306b\u7de8\u96c6\u3057\u3066\u304f\u3060\u3055\u3044\u3002  providers {\n    kcps =  /path/to/terraform-provider-kcps \n}", 
+            "title": "3. Provider Plugin\u306e\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb"
+        }, 
+        {
+            "location": "/configuration/provider/", 
+            "text": "Provider\n\n\n\u4f7f\u7528\u4f8b\n\n\nprovider \nkcps\n {\n    api_url     = \nhttps://portal2-east.cloud-platform.kddi.ne.jp:10443/client/api\n\n    api_key     = \nXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n    secret_key  = \nXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n\n    # verify_ssl = true\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u6ce8\u610f\n\n\n\n\n\n\n\n\n\n\napi_url\n\n\n\u25ef\n\n\nAPI\u306e\u30a8\u30f3\u30c9\u30dd\u30a4\u30f3\u30c8URL\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\napi_key\n\n\n\u25ef\n\n\nAPI\u30ad\u30fc\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nsecret_key\n\n\n\u25ef\n\n\n\u79d8\u5bc6\u30ad\u30fc\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nverify_ssl\n\n\n-\n\n\ntrue\u306a\u3089\u8a3c\u660e\u66f8\u30a8\u30e9\u30fc\u3092\u7121\u8996\u3059\u308b\n\n\nfalse\n\n\nbool\n\n\n-", 
+            "title": "Provider"
+        }, 
+        {
+            "location": "/configuration/provider/#provider", 
+            "text": "\u4f7f\u7528\u4f8b  provider  kcps  {\n    api_url     =  https://portal2-east.cloud-platform.kddi.ne.jp:10443/client/api \n    api_key     =  XXXXXXXXXXXXXXXXXXXXXXXXXX \n    secret_key  =  XXXXXXXXXXXXXXXXXXXXXXXXXX \n\n    # verify_ssl = true\n}  \u30d1\u30e9\u30e1\u30fc\u30bf     \u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u6ce8\u610f      api_url  \u25ef  API\u306e\u30a8\u30f3\u30c9\u30dd\u30a4\u30f3\u30c8URL  -  string  -    api_key  \u25ef  API\u30ad\u30fc  -  string  -    secret_key  \u25ef  \u79d8\u5bc6\u30ad\u30fc  -  string  -    verify_ssl  -  true\u306a\u3089\u8a3c\u660e\u66f8\u30a8\u30e9\u30fc\u3092\u7121\u8996\u3059\u308b  false  bool  -", 
             "title": "Provider"
         }, 
         {
             "location": "/configuration/resources/value_vm/", 
-            "text": "", 
+            "text": "Value VirtualMachine\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_value_vm \nmy_vm\n {\n    name              = \nmy_vm\n\n    serviceofferingid = \ne3060950-1b4f-4adb-b050-bbe99694da19\n \n    templateid        = \n0eb72664-f7ad-4d36-be3e-4f4c32ffe0e5\n\n    zoneid            = \n593697b6-c123-4025-b412-ef83822733e5\n\n\n    diskoffering{\n        diskofferingid = \n10cc47d1-2e04-4aeb-aec9-fb08d273198e\n\n        size           = 100\n    }\n}\n\n\n\n\n\u6ce8\u610f\u4e8b\u9805\n\n\n\u4f5c\u6210\u3057\u305fVM\u306fKCPS\u306e\u5185\u90e8\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\nPublicFrontSegment\n\u3068\nMonitoringNetwork\n\u306b\u81ea\u52d5\u7684\u306b\u63a5\u7d9a\u3055\u308c\u307e\u3059\u3002\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nname\n\n\n\u25ef\n\n\nVM\u306e\u540d\u524d\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nserviceofferingid\n\n\n\u25ef\n\n\n\u30b5\u30fc\u30d3\u30b9\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\ntemplateid\n\n\n\u25ef\n\n\n\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nzoneid\n\n\n\u25ef\n\n\n\u30be\u30fc\u30f3\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\ndiskoffering\n\n\n-\n\n\n\u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\n\n\n-\n\n\nlist(map)\n\n\n\u8a73\u7d30\u306f\u5f8c\u8ff0\n\n\n\n\n\n\n\n\ndiskoffering\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\ndiskofferingid\n\n\n\u25ef\n\n\n\u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nsize\n\n\n\u25ef\n\n\n\u30c7\u30a3\u30b9\u30af\u306e\u30b5\u30a4\u30ba\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-\n\n\n\n\n\n\npassword\n\n\nVM\u306e\u30d1\u30b9\u30ef\u30fc\u30c9\n\n\n\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u308b\u306a\u3089\u3070\u53d6\u5f97\u3067\u304d\u307e\u3059\n\n\n\n\n\n\npublicip\n\n\nStaticNAT\u30eb\u30fc\u30eb\u3092\u4f7f\u7528\u3057\u3066VM\u306b\u95a2\u9023\u4ed8\u3051\u3089\u308c\u305f\u30d1\u30d6\u30ea\u30c3\u30afIP\u30a2\u30c9\u30ec\u30b9\u306eID\n\n\nStaticNAT\u3092\u6709\u52b9\u5316\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059", 
             "title": "Value VM"
         }, 
         {
+            "location": "/configuration/resources/value_vm/#value-virtualmachine", 
+            "text": "", 
+            "title": "Value VirtualMachine"
+        }, 
+        {
+            "location": "/configuration/resources/value_vm/#_1", 
+            "text": "resource kcps_value_vm  my_vm  {\n    name              =  my_vm \n    serviceofferingid =  e3060950-1b4f-4adb-b050-bbe99694da19  \n    templateid        =  0eb72664-f7ad-4d36-be3e-4f4c32ffe0e5 \n    zoneid            =  593697b6-c123-4025-b412-ef83822733e5 \n\n    diskoffering{\n        diskofferingid =  10cc47d1-2e04-4aeb-aec9-fb08d273198e \n        size           = 100\n    }\n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/value_vm/#_2", 
+            "text": "\u4f5c\u6210\u3057\u305fVM\u306fKCPS\u306e\u5185\u90e8\u30cd\u30c3\u30c8\u30ef\u30fc\u30af PublicFrontSegment \u3068 MonitoringNetwork \u306b\u81ea\u52d5\u7684\u306b\u63a5\u7d9a\u3055\u308c\u307e\u3059\u3002", 
+            "title": "\u6ce8\u610f\u4e8b\u9805"
+        }, 
+        {
+            "location": "/configuration/resources/value_vm/#_3", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      name  \u25ef  VM\u306e\u540d\u524d  -  string  -    serviceofferingid  \u25ef  \u30b5\u30fc\u30d3\u30b9\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306eID  -  string  -    templateid  \u25ef  \u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u306eID  -  string  -    zoneid  \u25ef  \u30be\u30fc\u30f3\u306eID  -  string  -    diskoffering  -  \u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0  -  list(map)  \u8a73\u7d30\u306f\u5f8c\u8ff0", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/value_vm/#diskoffering", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      diskofferingid  \u25ef  \u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306eID  -  string  -    size  \u25ef  \u30c7\u30a3\u30b9\u30af\u306e\u30b5\u30a4\u30ba  -  int  -", 
+            "title": "diskoffering"
+        }, 
+        {
+            "location": "/configuration/resources/value_vm/#_4", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -    password  VM\u306e\u30d1\u30b9\u30ef\u30fc\u30c9  \u8a2d\u5b9a\u3055\u308c\u3066\u3044\u308b\u306a\u3089\u3070\u53d6\u5f97\u3067\u304d\u307e\u3059    publicip  StaticNAT\u30eb\u30fc\u30eb\u3092\u4f7f\u7528\u3057\u3066VM\u306b\u95a2\u9023\u4ed8\u3051\u3089\u308c\u305f\u30d1\u30d6\u30ea\u30c3\u30afIP\u30a2\u30c9\u30ec\u30b9\u306eID  StaticNAT\u3092\u6709\u52b9\u5316\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/volume/", 
+            "text": "Volume\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_volume \nmy_volume\n {\n    name     = \nmyvolume\n\n\n    diskoffering {\n        diskofferingid = \nbc1b5c0c-fcb3-4a7b-b8de-2c9d6952e0a5\n\n        size           = 100\n        zoneid         = \n593697b6-c123-4025-b412-ef83822733e5\n\n    }\n\n    attachto = \nfa608125-4658-4ff0-aab4-33a1b428988a\n\n\n    #snapshot {\n    #    snapshotid = \n3efa21f5-10dd-41a1-ab96-b1f6e0c3dff9\n\n    #}\n}\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nname\n\n\n\u25ef\n\n\n\u30dc\u30ea\u30e5\u30fc\u30e0\u540d\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\ndiskoffering\n\n\n\u6ce81\n\n\n\u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306e\u8a2d\u5b9a(\u30c7\u30a3\u30b9\u30af\u304b\u3089\u30dc\u30ea\u30e5\u30fc\u30e0\u3092\u4f5c\u6210\u3059\u308b\u5834\u5408\u306b\u5fc5\u8981)\n\n\n-\n\n\nlist(map)\n\n\n\u8a73\u7d30\u306f\u5f8c\u8ff0\n\n\n\n\n\n\nsnapshot\n\n\n\u6ce81\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u306e\u8a2d\u5b9a(\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u304b\u3089\u30dc\u30ea\u30e5\u30fc\u30e0\u3092\u4f5c\u6210\u3059\u308b\u5834\u5408\u306b\u5fc5\u8981)\n\n\n-\n\n\nlist(map)\n\n\n\u8a73\u7d30\u306f\u5f8c\u8ff0\n\n\n\n\n\n\nattachto\n\n\n-\n\n\n\u30dc\u30ea\u30e5\u30fc\u30e0\u3092\u30a2\u30bf\u30c3\u30c1\u3059\u308bVM\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\n\u6ce81: \ndiskoffering\n\u304b\nsnapshot\n\u3069\u3061\u3089\u304b\u3092\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002\n\n\ndiskoffering\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\ndiskofferingid\n\n\n\u25ef\n\n\n\u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nsize\n\n\n\u25ef\n\n\n\u30c7\u30a3\u30b9\u30af\u306e\u30b5\u30a4\u30ba\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\nzoneid\n\n\n\u25ef\n\n\n\u30be\u30fc\u30f3\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\nsnapshot\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nsnapshotid\n\n\n\u25ef\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-", 
+            "title": "Volume"
+        }, 
+        {
+            "location": "/configuration/resources/volume/#volume", 
+            "text": "", 
+            "title": "Volume"
+        }, 
+        {
+            "location": "/configuration/resources/volume/#_1", 
+            "text": "resource kcps_volume  my_volume  {\n    name     =  myvolume \n\n    diskoffering {\n        diskofferingid =  bc1b5c0c-fcb3-4a7b-b8de-2c9d6952e0a5 \n        size           = 100\n        zoneid         =  593697b6-c123-4025-b412-ef83822733e5 \n    }\n\n    attachto =  fa608125-4658-4ff0-aab4-33a1b428988a \n\n    #snapshot {\n    #    snapshotid =  3efa21f5-10dd-41a1-ab96-b1f6e0c3dff9 \n    #}\n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/volume/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      name  \u25ef  \u30dc\u30ea\u30e5\u30fc\u30e0\u540d  -  string  -    diskoffering  \u6ce81  \u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306e\u8a2d\u5b9a(\u30c7\u30a3\u30b9\u30af\u304b\u3089\u30dc\u30ea\u30e5\u30fc\u30e0\u3092\u4f5c\u6210\u3059\u308b\u5834\u5408\u306b\u5fc5\u8981)  -  list(map)  \u8a73\u7d30\u306f\u5f8c\u8ff0    snapshot  \u6ce81  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u306e\u8a2d\u5b9a(\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u304b\u3089\u30dc\u30ea\u30e5\u30fc\u30e0\u3092\u4f5c\u6210\u3059\u308b\u5834\u5408\u306b\u5fc5\u8981)  -  list(map)  \u8a73\u7d30\u306f\u5f8c\u8ff0    attachto  -  \u30dc\u30ea\u30e5\u30fc\u30e0\u3092\u30a2\u30bf\u30c3\u30c1\u3059\u308bVM\u306eID  -  string  -     \u6ce81:  diskoffering \u304b snapshot \u3069\u3061\u3089\u304b\u3092\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/volume/#diskoffering", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      diskofferingid  \u25ef  \u30c7\u30a3\u30b9\u30af\u30aa\u30d5\u30a1\u30ea\u30f3\u30b0\u306eID  -  string  -    size  \u25ef  \u30c7\u30a3\u30b9\u30af\u306e\u30b5\u30a4\u30ba  -  int  -    zoneid  \u25ef  \u30be\u30fc\u30f3\u306eID  -  string  -", 
+            "title": "diskoffering"
+        }, 
+        {
+            "location": "/configuration/resources/volume/#snapshot", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      snapshotid  \u25ef  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u306eID  -  string  -", 
+            "title": "snapshot"
+        }, 
+        {
+            "location": "/configuration/resources/volume/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/template/", 
+            "text": "Template\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_template \nmy_template\n {\n    name                  = \nmy_template\n\n    displaytext           = \ntest desu\n\n    ostypeid              = \n817437d2-7aae-11e4-b5b5-c45444131635\n\n    snapshotid            = \na48081bd-aa4d-48f3-a53a-75ef960c0bec\n\n\n    isdynamicallyscalable = true\n    passwordenabled       = true\n    ispublic              = true\n\n    #volumeid = \n453983a0-5c2e-4645-9468-5e7e63ebf045\n \n}\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nname\n\n\n\u25ef\n\n\n\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u306e\u540d\u524d\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\ndisplaytext\n\n\n\u25ef\n\n\n\u4f7f\u7528\u76ee\u7684\u306e\u8a18\u8ff0\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nostypeid\n\n\n\u25ef\n\n\nOS\u30bf\u30a4\u30d7\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nsnapshotid\n\n\n\u6ce81\n\n\n\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nvolumeid\n\n\n\u6ce81\n\n\n\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30dc\u30ea\u30e5\u30fc\u30e0\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nisdynamicallyscalable\n\n\n-\n\n\n\u52d5\u7684\u30b9\u30b1\u30fc\u30ea\u30f3\u30b0\n\n\nfalse\n\n\nbool\n\n\n-\n\n\n\n\n\n\npasswordenabled\n\n\n-\n\n\n\u30d1\u30b9\u30ef\u30fc\u30c9\u6709\u52b9\u5316\n\n\nfalse\n\n\nbool\n\n\n-\n\n\n\n\n\n\nispublic\n\n\n-\n\n\n\u516c\u958b\u30ec\u30d9\u30eb\n\n\nfalse\n\n\nbool\n\n\n-\n\n\n\n\n\n\n\n\n\u6ce81: \nsnapshotid\n\u304b\nvolumeid\n\u306e\u3069\u3061\u3089\u304b\u3092\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308b\u3002\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-", 
+            "title": "Template"
+        }, 
+        {
+            "location": "/configuration/resources/template/#template", 
+            "text": "", 
+            "title": "Template"
+        }, 
+        {
+            "location": "/configuration/resources/template/#_1", 
+            "text": "resource kcps_template  my_template  {\n    name                  =  my_template \n    displaytext           =  test desu \n    ostypeid              =  817437d2-7aae-11e4-b5b5-c45444131635 \n    snapshotid            =  a48081bd-aa4d-48f3-a53a-75ef960c0bec \n\n    isdynamicallyscalable = true\n    passwordenabled       = true\n    ispublic              = true\n\n    #volumeid =  453983a0-5c2e-4645-9468-5e7e63ebf045  \n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/template/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      name  \u25ef  \u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u306e\u540d\u524d  -  string  -    displaytext  \u25ef  \u4f7f\u7528\u76ee\u7684\u306e\u8a18\u8ff0  -  string  -    ostypeid  \u25ef  OS\u30bf\u30a4\u30d7\u306eID  -  string  -    snapshotid  \u6ce81  \u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u306eID  -  string  -    volumeid  \u6ce81  \u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30dc\u30ea\u30e5\u30fc\u30e0\u306eID  -  string  -    isdynamicallyscalable  -  \u52d5\u7684\u30b9\u30b1\u30fc\u30ea\u30f3\u30b0  false  bool  -    passwordenabled  -  \u30d1\u30b9\u30ef\u30fc\u30c9\u6709\u52b9\u5316  false  bool  -    ispublic  -  \u516c\u958b\u30ec\u30d9\u30eb  false  bool  -     \u6ce81:  snapshotid \u304b volumeid \u306e\u3069\u3061\u3089\u304b\u3092\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308b\u3002", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/template/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot/", 
+            "text": "Snapshot\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_snapshot \nmy_snapshot\n{\n    volumeid = \n453983a0-5c2e-4645-9468-5e7e63ebf045\n\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nvolumeid\n\n\n\u25ef\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30dc\u30ea\u30e5\u30fc\u30e0\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-", 
+            "title": "Snapshot"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot/#snapshot", 
+            "text": "", 
+            "title": "Snapshot"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot/#_1", 
+            "text": "resource kcps_snapshot  my_snapshot {\n    volumeid =  453983a0-5c2e-4645-9468-5e7e63ebf045 \n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      volumeid  \u25ef  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30dc\u30ea\u30e5\u30fc\u30e0\u306eID  -  string  -", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/vmsnapshot/", 
+            "text": "VM Snapshot\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_vmsnapshot \nmy_vmsnapshot\n{\n    virtualmachineid = \nbe4a143f-3cdd-4091-9a8c-d82c78e49ddf\n\n    displayname      = \nmy_vmsnapshot\n\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nvirtualmachineid\n\n\n\u25ef\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308bVM\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\ndisplayname\n\n\n\u25ef\n\n\n\u8868\u793a\u540d\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-", 
+            "title": "VMSnapshot"
+        }, 
+        {
+            "location": "/configuration/resources/vmsnapshot/#vm-snapshot", 
+            "text": "", 
+            "title": "VM Snapshot"
+        }, 
+        {
+            "location": "/configuration/resources/vmsnapshot/#_1", 
+            "text": "resource kcps_vmsnapshot  my_vmsnapshot {\n    virtualmachineid =  be4a143f-3cdd-4091-9a8c-d82c78e49ddf \n    displayname      =  my_vmsnapshot \n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/vmsnapshot/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      virtualmachineid  \u25ef  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308bVM\u306eID  -  string  -    displayname  \u25ef  \u8868\u793a\u540d  -  string  -", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/vmsnapshot/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot_policy/", 
+            "text": "Snapshot Policy\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_snapshot_policy \nmy_snapshot_policy\n{\n    intervaltype = \nWEEKLY\n\n    maxsnaps     = 3\n    schedule     = \n10:10:6\n\n    timezone     = \nJST\n\n    volumeid     = \n2eaf5912-78a5-41ef-825f-9f4558511450\n\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nintervaltype\n\n\n\u25ef\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u4f5c\u6210\u3059\u308b\u9593\u9694\n\n\n-\n\n\nstring\n\n\nDAILY\u3001WEEKLY\u3001MONTHLY\u306e\u5185\u306e\u3069\u308c\u304b\n\n\n\n\n\n\nmaxsnaps\n\n\n\u25ef\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u3044\u304f\u3064\u4fdd\u6301\u3059\u308b\u304b\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\nschedule\n\n\n\u25ef\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u4f5c\u6210\u3059\u308b\u6642\u9593\n\n\n-\n\n\nstring\n\n\n\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\u306b\u3064\u3044\u3066\u306f\u5f8c\u8ff0\n\n\n\n\n\n\ntimezone\n\n\n\u25ef\n\n\n\u30bf\u30a4\u30e0\u30be\u30fc\u30f3\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nvolumeid\n\n\n\u25ef\n\n\n\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30dc\u30ea\u30e5\u30fc\u30e0\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\nschedule\u306e\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\n\n\nintervaltype\n\u306b\u3088\u3063\u3066\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\u304c\u5909\u5316\u3057\u307e\u3059\u3002\n\n\n\n\n\n\n\n\nintervaltype\n\n\nschedule\u306e\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\n\n\nDD\u306b\u3064\u3044\u3066\n\n\n\n\n\n\n\n\n\n\nDAILY\n\n\nMM:HH*\n\n\n-\n\n\n\n\n\n\nWEEKLY\n\n\nMM:HH:DD\n\n\nWEEKLY\u306eDD\u306f\u66dc\u65e5\u3092\u793a\u3059(\u65e5\u66dc\uff5e\u571f\u66dc\uff1a1\uff5e7)\n\n\n\n\n\n\nMONTHLY\n\n\nMM:HH:DD\n\n\nMONTHLY\u306eDD\u306f\u65e5\u4ed8(1\uff5e31)\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-", 
+            "title": "Snapshot Policy"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot_policy/#snapshot-policy", 
+            "text": "", 
+            "title": "Snapshot Policy"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot_policy/#_1", 
+            "text": "resource kcps_snapshot_policy  my_snapshot_policy {\n    intervaltype =  WEEKLY \n    maxsnaps     = 3\n    schedule     =  10:10:6 \n    timezone     =  JST \n    volumeid     =  2eaf5912-78a5-41ef-825f-9f4558511450 \n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot_policy/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      intervaltype  \u25ef  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u4f5c\u6210\u3059\u308b\u9593\u9694  -  string  DAILY\u3001WEEKLY\u3001MONTHLY\u306e\u5185\u306e\u3069\u308c\u304b    maxsnaps  \u25ef  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u3044\u304f\u3064\u4fdd\u6301\u3059\u308b\u304b  -  int  -    schedule  \u25ef  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u4f5c\u6210\u3059\u308b\u6642\u9593  -  string  \u30d5\u30a9\u30fc\u30de\u30c3\u30c8\u306b\u3064\u3044\u3066\u306f\u5f8c\u8ff0    timezone  \u25ef  \u30bf\u30a4\u30e0\u30be\u30fc\u30f3  -  string  -    volumeid  \u25ef  \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u4f5c\u6210\u306b\u4f7f\u7528\u3059\u308b\u30dc\u30ea\u30e5\u30fc\u30e0\u306eID  -  string  -", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot_policy/#schedule", 
+            "text": "intervaltype \u306b\u3088\u3063\u3066\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\u304c\u5909\u5316\u3057\u307e\u3059\u3002     intervaltype  schedule\u306e\u30d5\u30a9\u30fc\u30de\u30c3\u30c8  DD\u306b\u3064\u3044\u3066      DAILY  MM:HH*  -    WEEKLY  MM:HH:DD  WEEKLY\u306eDD\u306f\u66dc\u65e5\u3092\u793a\u3059(\u65e5\u66dc\uff5e\u571f\u66dc\uff1a1\uff5e7)    MONTHLY  MM:HH:DD  MONTHLY\u306eDD\u306f\u65e5\u4ed8(1\uff5e31)", 
+            "title": "schedule\u306e\u30d5\u30a9\u30fc\u30de\u30c3\u30c8"
+        }, 
+        {
+            "location": "/configuration/resources/snapshot_policy/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
             "location": "/configuration/resources/nic/", 
+            "text": "Nic\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_nic \nmy_nic\n{\n    networkid           = \nd0f15c14-4d94-4a69-b39a-994721bfc809\n\n    virtualmachineid    = \nbe4a143f-3cdd-4091-9a8c-d82c78e49ddf\n\n\n    secondaryip         = [\n198.18.57.252\n,\n198.18.57.254\n]\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nnetworkid\n\n\n\u25ef\n\n\n\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nvirtualmachineid\n\n\n\u25ef\n\n\nNic\u3092\u642d\u8f09\u3055\u305b\u308bVM\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nsecondaryip\n\n\n-\n\n\nNic\u306b\u5272\u308a\u5f53\u3066\u308b\u30bb\u30ab\u30f3\u30c0\u30ea\u30fcIP\n\n\n-\n\n\nlist(string)\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-", 
+            "title": "Nic"
+        }, 
+        {
+            "location": "/configuration/resources/nic/#nic", 
             "text": "", 
             "title": "Nic"
+        }, 
+        {
+            "location": "/configuration/resources/nic/#_1", 
+            "text": "resource kcps_nic  my_nic {\n    networkid           =  d0f15c14-4d94-4a69-b39a-994721bfc809 \n    virtualmachineid    =  be4a143f-3cdd-4091-9a8c-d82c78e49ddf \n\n    secondaryip         = [ 198.18.57.252 , 198.18.57.254 ]\n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/nic/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      networkid  \u25ef  \u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u306eID  -  string  -    virtualmachineid  \u25ef  Nic\u3092\u642d\u8f09\u3055\u305b\u308bVM\u306eID  -  string  -    secondaryip  -  Nic\u306b\u5272\u308a\u5f53\u3066\u308b\u30bb\u30ab\u30f3\u30c0\u30ea\u30fcIP  -  list(string)  -", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/nic/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/publicip/", 
+            "text": "Public IP\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource \nkcps_publicip\n \nmy_publicip\n {\n    networkid = \n7b921a2d-8c82-4016-bbd0-cf0dd6877408\n\n\n    staticnat {\n        virtualmachineid = \nb107347a-3447-4e9f-8778-ed49941b5821\n\n        vmguestip        = \n10.1.1.13\n\n    }\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nnetworkid\n\n\n\u25ef\n\n\n\u30cd\u30c3\u30c8\u30ef\u30fc\u30afID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nstaticnat\n\n\n-\n\n\n\u9759\u7684NAT\u306e\u8a2d\u5b9a\n\n\n-\n\n\nlist(map)\n\n\n\u8a73\u7d30\u306f\u5f8c\u8ff0\n\n\n\n\n\n\n\n\nstaticnat\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nvirtualmachineid\n\n\n\u25ef\n\n\n\u9759\u7684NAT\u3092\u9069\u7528\u3059\u308bVM\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nvmguestip\n\n\n-\n\n\nVM\u306e\u30bb\u30ab\u30f3\u30c0\u30eaIP\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-\n\n\n\n\n\n\nipaddress\n\n\nIP\u30a2\u30c9\u30ec\u30b9\n\n\n-", 
+            "title": "Public IP"
+        }, 
+        {
+            "location": "/configuration/resources/publicip/#public-ip", 
+            "text": "", 
+            "title": "Public IP"
+        }, 
+        {
+            "location": "/configuration/resources/publicip/#_1", 
+            "text": "resource  kcps_publicip   my_publicip  {\n    networkid =  7b921a2d-8c82-4016-bbd0-cf0dd6877408 \n\n    staticnat {\n        virtualmachineid =  b107347a-3447-4e9f-8778-ed49941b5821 \n        vmguestip        =  10.1.1.13 \n    }\n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/publicip/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      networkid  \u25ef  \u30cd\u30c3\u30c8\u30ef\u30fc\u30afID  -  string  -    staticnat  -  \u9759\u7684NAT\u306e\u8a2d\u5b9a  -  list(map)  \u8a73\u7d30\u306f\u5f8c\u8ff0", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/publicip/#staticnat", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      virtualmachineid  \u25ef  \u9759\u7684NAT\u3092\u9069\u7528\u3059\u308bVM\u306eID  -  string  -    vmguestip  -  VM\u306e\u30bb\u30ab\u30f3\u30c0\u30eaIP  -  string  -", 
+            "title": "staticnat"
+        }, 
+        {
+            "location": "/configuration/resources/publicip/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -    ipaddress  IP\u30a2\u30c9\u30ec\u30b9  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/firewall/", 
+            "text": "Firewall\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_firewall \nmy_firewall\n {\n    ipaddressid = \n165bd632-738b-44e4-8449-562fcd6da509\n\n    protocol    = \nTCP\n\n    cidrlist    = [\n1.1.1.1/32\n, \n2.2.2.2/32\n] \n\n    port {\n        startport   = 1020\n        endport     = 1023\n    }\n\n    #icmp {\n    #    icmpcode = 0\n    #    icmptype = 3\n    #}\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nipaddressid\n\n\n\u25ef\n\n\nFirewall\u30eb\u30fc\u30eb\u3092\u8a2d\u5b9a\u3059\u308bIP\u30a2\u30c9\u30ec\u30b9\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nprotocol\n\n\n\u25ef\n\n\nFirewall\u30eb\u30fc\u30eb\u306e\u30d7\u30ed\u30c8\u30b3\u30eb\n\n\n-\n\n\nstring\n\n\nTCP\u3001UDP\u3001ICMP\u306e\u5185\u306e\u3069\u308c\u304b\n\n\n\n\n\n\ncidrlist\n\n\n\u25ef\n\n\nFirewall\u3067\u8a31\u53ef\u3059\u308b\u9001\u4fe1\u5143\u306eCIDR\n\n\n-\n\n\nlist(string)\n\n\n-\n\n\n\n\n\n\nport\n\n\n\u6ce81 \u6ce82\n\n\n\u8a31\u53ef\u3059\u308b\u30dd\u30fc\u30c8\u306e\u7bc4\u56f2\u306e\u8a2d\u5b9a\n\n\n-\n\n\nlist(map)\n\n\n\u8a73\u7d30\u306f\u5f8c\u8ff0\n\n\n\n\n\n\nicmp\n\n\n\u6ce81 \u6ce83\n\n\n\u62d2\u5426\u3059\u308bICMP\u30e1\u30c3\u30bb\u30fc\u30b8\u306b\u95a2\u3059\u308b\u8a2d\u5b9a\n\n\n-\n\n\nlist(map)\n\n\n\u8a73\u7d30\u306f\u5f8c\u8ff0\n\n\n\n\n\n\n\n\n\u6ce81: \nport\n\u304b\nicmp\n\u3069\u3061\u3089\u304b\u3092\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002 \n\n\u6ce82: \nprotocol=\"TCP\"\n\u307e\u305f\u306f\nprotocol=\"UDP\"\n\u306e\u5834\u5408\u306b\u8a2d\u5b9a\u3067\u304d\u307e\u3059\u3002 \n\n\u6ce83: \nprotocol=\"ICMP\"\n\u306e\u5834\u5408\u306b\u8a2d\u5b9a\u3067\u304d\u307e\u3059\u3002\n\n\nport\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nstartport\n\n\n\u25ef\n\n\n\u958b\u59cb\u30dd\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\nendport\n\n\n\u25ef\n\n\n\u7d42\u4e86\u30dd\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\n\n\nicmp\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nicmpcode\n\n\n\u25ef\n\n\nICMP\u30e1\u30c3\u30bb\u30fc\u30b8\u306e\u30b3\u30fc\u30c9\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\nicmptype\n\n\n\u25ef\n\n\nICMP\u30e1\u30c3\u30bb\u30fc\u30b8\u306e\u30bf\u30a4\u30d7\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-\n\n\n\n\n\n\nipaddress\n\n\nIP\u30a2\u30c9\u30ec\u30b9\n\n\n-", 
+            "title": "Firewall"
+        }, 
+        {
+            "location": "/configuration/resources/firewall/#firewall", 
+            "text": "", 
+            "title": "Firewall"
+        }, 
+        {
+            "location": "/configuration/resources/firewall/#_1", 
+            "text": "resource kcps_firewall  my_firewall  {\n    ipaddressid =  165bd632-738b-44e4-8449-562fcd6da509 \n    protocol    =  TCP \n    cidrlist    = [ 1.1.1.1/32 ,  2.2.2.2/32 ] \n\n    port {\n        startport   = 1020\n        endport     = 1023\n    }\n\n    #icmp {\n    #    icmpcode = 0\n    #    icmptype = 3\n    #}\n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/firewall/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      ipaddressid  \u25ef  Firewall\u30eb\u30fc\u30eb\u3092\u8a2d\u5b9a\u3059\u308bIP\u30a2\u30c9\u30ec\u30b9\u306eID  -  string  -    protocol  \u25ef  Firewall\u30eb\u30fc\u30eb\u306e\u30d7\u30ed\u30c8\u30b3\u30eb  -  string  TCP\u3001UDP\u3001ICMP\u306e\u5185\u306e\u3069\u308c\u304b    cidrlist  \u25ef  Firewall\u3067\u8a31\u53ef\u3059\u308b\u9001\u4fe1\u5143\u306eCIDR  -  list(string)  -    port  \u6ce81 \u6ce82  \u8a31\u53ef\u3059\u308b\u30dd\u30fc\u30c8\u306e\u7bc4\u56f2\u306e\u8a2d\u5b9a  -  list(map)  \u8a73\u7d30\u306f\u5f8c\u8ff0    icmp  \u6ce81 \u6ce83  \u62d2\u5426\u3059\u308bICMP\u30e1\u30c3\u30bb\u30fc\u30b8\u306b\u95a2\u3059\u308b\u8a2d\u5b9a  -  list(map)  \u8a73\u7d30\u306f\u5f8c\u8ff0     \u6ce81:  port \u304b icmp \u3069\u3061\u3089\u304b\u3092\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002  \n\u6ce82:  protocol=\"TCP\" \u307e\u305f\u306f protocol=\"UDP\" \u306e\u5834\u5408\u306b\u8a2d\u5b9a\u3067\u304d\u307e\u3059\u3002  \n\u6ce83:  protocol=\"ICMP\" \u306e\u5834\u5408\u306b\u8a2d\u5b9a\u3067\u304d\u307e\u3059\u3002", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/firewall/#port", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      startport  \u25ef  \u958b\u59cb\u30dd\u30fc\u30c8  -  int  -    endport  \u25ef  \u7d42\u4e86\u30dd\u30fc\u30c8  -  int  -", 
+            "title": "port"
+        }, 
+        {
+            "location": "/configuration/resources/firewall/#icmp", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      icmpcode  \u25ef  ICMP\u30e1\u30c3\u30bb\u30fc\u30b8\u306e\u30b3\u30fc\u30c9  -  int  -    icmptype  \u25ef  ICMP\u30e1\u30c3\u30bb\u30fc\u30b8\u306e\u30bf\u30a4\u30d7  -  int  -", 
+            "title": "icmp"
+        }, 
+        {
+            "location": "/configuration/resources/firewall/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -    ipaddress  IP\u30a2\u30c9\u30ec\u30b9  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/nat_portforward/", 
+            "text": "NAT/PortForward\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_nat_portforward \nmy_nat_portforward\n {\n    ipaddressid      = \n165bd632-738b-44e4-8449-562fcd6da509\n\n    protocol         = \nTCP\n\n    virtualmachineid = \nbe4a143f-3cdd-4091-9a8c-d82c78e49ddf\n\n\n    port {\n        privateport    = 1020\n        publicport     = 1020\n        privateendport = 1023\n        publicendport  = 1023\n    }\n\n    vmguestip        = \n10.1.1.56\n\n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nipaddressid\n\n\n\u25ef\n\n\nPortForwarding\u30eb\u30fc\u30eb\u3092\u8a2d\u5b9a\u3059\u308bIP\u30a2\u30c9\u30ec\u30b9\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nprotocol\n\n\n\u25ef\n\n\n\u30d7\u30ed\u30c8\u30b3\u30eb\n\n\n-\n\n\nstring\n\n\nTCP\u307e\u305f\u306fUDP\n\n\n\n\n\n\nvirtualmachineid\n\n\n\u25ef\n\n\nPortForwarding\u30eb\u30fc\u30eb\u3092\u9069\u7528\u3059\u308bVM\u306eID\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nport\n\n\n\u25ef\n\n\n\u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\u30dd\u30fc\u30c8\u3068\u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8\u306e\u7bc4\u56f2\u306e\u8a2d\u5b9a\n\n\n-\n\n\nlist(map)\n\n\n\u8a73\u7d30\u306f\u5f8c\u8ff0\n\n\n\n\n\n\nvmguestip\n\n\n-\n\n\nVM\u306e\u30bb\u30ab\u30f3\u30c0\u30eaIP\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\n\n\nport\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nprivateport\n\n\n\u25ef\n\n\n\u958b\u59cb\u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\npublicport\n\n\n\u25ef\n\n\n\u958b\u59cb\u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\nprivateendport\n\n\n-\n\n\n\u7d42\u4e86\u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\u30dd\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\npublicendport\n\n\n-\n\n\n\u7d42\u4e86\u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-\n\n\n\n\n\n\nipaddress\n\n\nIP\u30a2\u30c9\u30ec\u30b9\n\n\n-", 
+            "title": "NAT/PortForward"
+        }, 
+        {
+            "location": "/configuration/resources/nat_portforward/#natportforward", 
+            "text": "", 
+            "title": "NAT/PortForward"
+        }, 
+        {
+            "location": "/configuration/resources/nat_portforward/#_1", 
+            "text": "resource kcps_nat_portforward  my_nat_portforward  {\n    ipaddressid      =  165bd632-738b-44e4-8449-562fcd6da509 \n    protocol         =  TCP \n    virtualmachineid =  be4a143f-3cdd-4091-9a8c-d82c78e49ddf \n\n    port {\n        privateport    = 1020\n        publicport     = 1020\n        privateendport = 1023\n        publicendport  = 1023\n    }\n\n    vmguestip        =  10.1.1.56 \n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/nat_portforward/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      ipaddressid  \u25ef  PortForwarding\u30eb\u30fc\u30eb\u3092\u8a2d\u5b9a\u3059\u308bIP\u30a2\u30c9\u30ec\u30b9\u306eID  -  string  -    protocol  \u25ef  \u30d7\u30ed\u30c8\u30b3\u30eb  -  string  TCP\u307e\u305f\u306fUDP    virtualmachineid  \u25ef  PortForwarding\u30eb\u30fc\u30eb\u3092\u9069\u7528\u3059\u308bVM\u306eID  -  string  -    port  \u25ef  \u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\u30dd\u30fc\u30c8\u3068\u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8\u306e\u7bc4\u56f2\u306e\u8a2d\u5b9a  -  list(map)  \u8a73\u7d30\u306f\u5f8c\u8ff0    vmguestip  -  VM\u306e\u30bb\u30ab\u30f3\u30c0\u30eaIP  -  string  -", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/nat_portforward/#port", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      privateport  \u25ef  \u958b\u59cb\u30d7\u30e9\u30a4\u30d9\u30fc\u30c8  -  int  -    publicport  \u25ef  \u958b\u59cb\u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8  -  int  -    privateendport  -  \u7d42\u4e86\u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\u30dd\u30fc\u30c8  -  int  -    publicendport  -  \u7d42\u4e86\u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8  -  int  -", 
+            "title": "port"
+        }, 
+        {
+            "location": "/configuration/resources/nat_portforward/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -    ipaddress  IP\u30a2\u30c9\u30ec\u30b9  -", 
+            "title": "\u5c5e\u6027"
+        }, 
+        {
+            "location": "/configuration/resources/loadbalancer/", 
+            "text": "LoadBalancer\n\n\n\u4f7f\u7528\u4f8b\n\n\nresource kcps_loadbalancer \nmy_loadbalancer\n {\n    name        = \nmy_loadbalancer\n \n    algorithm   = \nsource\n\n    privateport = 80\n    publicport  = 8080\n    publicipid  = \nb2a3a2b6-67ff-46d2-877b-25618824b1ae\n\n\n    assignto    = [ \nfa608125-4658-4ff0-aab4-33a1b428988a\n,\n                    \nbe4a143f-3cdd-4091-9a8c-d82c78e49ddf\n ]  \n}\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\n\n\n\n\n\n\n\n\n\u30d1\u30e9\u30e1\u30fc\u30bf\u540d\n\n\n\u5fc5\u9808\n\n\n\u8aac\u660e\n\n\n\u521d\u671f\u5024\n\n\n\u30bf\u30a4\u30d7\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nname\n\n\n\u25ef\n\n\nLoadBalancer\u306e\u540d\u524d\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nalgorithm\n\n\n\u25ef\n\n\nLoadBalancer\u306e\u30a2\u30eb\u30b4\u30ea\u30ba\u30e0\n\n\n-\n\n\nstring\n\n\nsource\u3001roundrobin\u3001leastconn\u306e\u5185\u306e\u3069\u308c\u304b\n\n\n\n\n\n\nprivateport\n\n\n\u25ef\n\n\n\u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\u30dd\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\npublicport\n\n\n\u25ef\n\n\n\u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8\n\n\n-\n\n\nint\n\n\n-\n\n\n\n\n\n\npublicipid\n\n\n\u25ef\n\n\nLoadBalancer\u3092\u8a2d\u5b9a\u3059\u308b\u30d1\u30d6\u30ea\u30c3\u30afIP\u30a2\u30c9\u30ec\u30b9\n\n\n-\n\n\nstring\n\n\n-\n\n\n\n\n\n\nassignto\n\n\n-\n\n\nLoadBalancer\u306b\u63a5\u7d9a\u3059\u308bVM\u306eID\n\n\n-\n\n\nlist(string)\n\n\n-\n\n\n\n\n\n\n\n\n\u5c5e\u6027\n\n\n\n\n\n\n\n\n\u5c5e\u6027\u540d\n\n\n\u8aac\u660e\n\n\n\u5099\u8003\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u30ea\u30bd\u30fc\u30b9ID\n\n\n-", 
+            "title": "LoadBalancer"
+        }, 
+        {
+            "location": "/configuration/resources/loadbalancer/#loadbalancer", 
+            "text": "", 
+            "title": "LoadBalancer"
+        }, 
+        {
+            "location": "/configuration/resources/loadbalancer/#_1", 
+            "text": "resource kcps_loadbalancer  my_loadbalancer  {\n    name        =  my_loadbalancer  \n    algorithm   =  source \n    privateport = 80\n    publicport  = 8080\n    publicipid  =  b2a3a2b6-67ff-46d2-877b-25618824b1ae \n\n    assignto    = [  fa608125-4658-4ff0-aab4-33a1b428988a ,\n                     be4a143f-3cdd-4091-9a8c-d82c78e49ddf  ]  \n}", 
+            "title": "\u4f7f\u7528\u4f8b"
+        }, 
+        {
+            "location": "/configuration/resources/loadbalancer/#_2", 
+            "text": "\u30d1\u30e9\u30e1\u30fc\u30bf\u540d  \u5fc5\u9808  \u8aac\u660e  \u521d\u671f\u5024  \u30bf\u30a4\u30d7  \u5099\u8003      name  \u25ef  LoadBalancer\u306e\u540d\u524d  -  string  -    algorithm  \u25ef  LoadBalancer\u306e\u30a2\u30eb\u30b4\u30ea\u30ba\u30e0  -  string  source\u3001roundrobin\u3001leastconn\u306e\u5185\u306e\u3069\u308c\u304b    privateport  \u25ef  \u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\u30dd\u30fc\u30c8  -  int  -    publicport  \u25ef  \u30d1\u30d6\u30ea\u30c3\u30af\u30dd\u30fc\u30c8  -  int  -    publicipid  \u25ef  LoadBalancer\u3092\u8a2d\u5b9a\u3059\u308b\u30d1\u30d6\u30ea\u30c3\u30afIP\u30a2\u30c9\u30ec\u30b9  -  string  -    assignto  -  LoadBalancer\u306b\u63a5\u7d9a\u3059\u308bVM\u306eID  -  list(string)  -", 
+            "title": "\u30d1\u30e9\u30e1\u30fc\u30bf"
+        }, 
+        {
+            "location": "/configuration/resources/loadbalancer/#_3", 
+            "text": "\u5c5e\u6027\u540d  \u8aac\u660e  \u5099\u8003      id  \u30ea\u30bd\u30fc\u30b9ID  -", 
+            "title": "\u5c5e\u6027"
         }, 
         {
             "location": "/configuration/data_sources/value_vm/", 

@@ -67,6 +67,9 @@
     <a class="current" href="./">Provider</a>
     <ul class="subnav">
             
+    <li class="toctree-l3"><a href="#provider">Provider</a></li>
+    
+
     </ul>
                 </li>
                 <li class="">
@@ -79,7 +82,43 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../resources/volume/">Volume</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/template/">Template</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/snapshot/">Snapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/vmsnapshot/">VMSnapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/snapshot_policy/">Snapshot Policy</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../resources/nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/publicip/">Public IP</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/firewall/">Firewall</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/nat_portforward/">NAT/PortForward</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../resources/loadbalancer/">LoadBalancer</a>
                 </li>
     </ul>
                 </li>
@@ -136,7 +175,64 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="provider">Provider</h1>
+<p>使用例</p>
+<pre><code class="hcl">provider &quot;kcps&quot; {
+    api_url     = &quot;https://portal2-east.cloud-platform.kddi.ne.jp:10443/client/api&quot;
+    api_key     = &quot;XXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
+    secret_key  = &quot;XXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
+
+    # verify_ssl = true
+}
+</code></pre>
+
+<p>パラメータ</p>
+<table>
+<thead>
+<tr>
+<th align="left">パラメータ名</th>
+<th align="left">必須</th>
+<th align="left">説明</th>
+<th align="left">初期値</th>
+<th align="left">タイプ</th>
+<th align="left">注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>api_url</code></td>
+<td align="left">◯</td>
+<td align="left">APIのエンドポイントURL</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>api_key</code></td>
+<td align="left">◯</td>
+<td align="left">APIキー</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>secret_key</code></td>
+<td align="left">◯</td>
+<td align="left">秘密キー</td>
+<td align="left">-</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>verify_ssl</code></td>
+<td align="left">-</td>
+<td align="left">trueなら証明書エラーを無視する</td>
+<td align="left">false</td>
+<td align="left">bool</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
