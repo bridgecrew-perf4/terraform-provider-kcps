@@ -27,11 +27,11 @@ func dataSourceKcpsNic() *schema.Resource {
 				Optional: true,
 			},
 
-			"ip6address": {
+			"ipaddress": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"ipaddress": {
+			"ip6address": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},

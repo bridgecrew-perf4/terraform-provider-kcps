@@ -20,7 +20,7 @@ resource kcps_template "my_template" {
 
 ## パラメータ
 
-|パラメータ名 |必須    |説明      |初期値    |タイプ    |備考|
+|パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
 |`name`          |◯|テンプレートの名前          | - | string | - |
 |`displaytext`   |◯|使用目的の記述  | - | string | - |
@@ -32,10 +32,10 @@ resource kcps_template "my_template" {
 |`ispublic`   |-|公開レベル  | false | bool | - |
 
 
-注1: `snapshotid`か`volumeid`のどちらかを設定する必要がある。
+注1: `snapshotid`か`volumeid`のどちらかを設定する必要があります。
 
 
 ## 属性
-|属性名 |説明      |備考 |
+|属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |リソースID              | - | 

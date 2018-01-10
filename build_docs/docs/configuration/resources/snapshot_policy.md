@@ -15,10 +15,10 @@ resource kcps_snapshot_policy "my_snapshot_policy"{
 
 ## パラメータ
 
-|パラメータ名 |必須    |説明      |初期値    |タイプ    |備考|
+|パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
 |`intervaltype` |◯|スナップショットを作成する間隔  | - | string | DAILY、WEEKLY、MONTHLYの内のどれか |
-|`maxsnaps`   |◯|スナップショットをいくつ保持するか           | - | int | - |
+|`maxsnaps`   |◯|スナップショットの保持数           | - | int | - |
 |`schedule`    |◯| スナップショットを作成する時間       | - | string | フォーマットについては後述 |
 |`timezone` |◯|タイムゾーン     | - | string | - |
 |`volumeid` |◯|スナップショット作成に使用するボリュームのID  | - | string | - |
@@ -38,6 +38,6 @@ resource kcps_snapshot_policy "my_snapshot_policy"{
 
 
 ## 属性
-|属性名 |説明      |備考 |
+|属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |リソースID   | - | 

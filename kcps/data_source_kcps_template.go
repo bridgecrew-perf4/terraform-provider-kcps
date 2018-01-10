@@ -51,15 +51,11 @@ func dataSourceKcpsTemplate() *schema.Resource {
 				},
 			},
 			"zoneid": {
-				Type:         schema.TypeString,
-				Optional:     true,
-				ValidateFunc: validateZoneId(),
-			},
-
-			"displaytext": {
 				Type:     schema.TypeString,
+				Optional: true,
 				Computed: true,
 			},
+
 			"format": {
 				Type:     schema.TypeString,
 				Computed: true,
@@ -114,8 +110,6 @@ func dataSourceKcpsTemplateRead(d *schema.ResourceData, meta interface{}) error 
 		p.SetZoneid(zoneid.(string))
 	}
 
-	p.SetName(d.Get("name").(string))
-	p.SetZoneid(d.Get("zoneid").(string))
 	r, err := cli.Template.ListTemplates(p)
 
 	if err != nil {
@@ -128,11 +122,10 @@ func dataSourceKcpsTemplateRead(d *schema.ResourceData, meta interface{}) error 
 
 	v := r.Templates[0]
 
+	d.Set("template_id", v.Id)
 	d.Set("name", v.Name)
 	d.Set("zoneid", v.Zoneid)
 
-	d.Set("template_id", v.Id)
-	d.Set("displaytext", v.Displaytext)
 	d.Set("format", v.Format)
 	d.Set("hypervisor", v.Hypervisor)
 	d.Set("isdynamicallyscalable", v.Isdynamicallyscalable)

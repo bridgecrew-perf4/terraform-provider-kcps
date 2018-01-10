@@ -11,13 +11,13 @@ $ brew install terraform
 
 ## 2. APIキーと秘密キーの取得
 
-TerraformからKDDI Cloud Platform Serviceを操作するためには、APIを叩くのに使用する各種キーが必要です。
+TerraformからKDDI Cloud Platform Serviceを操作するには、APIを利用するための各種キーが必要です。
 
 KDDIクラウドプラットフォームナレッジサイトの[API利用準備](https://iaas.cloud-platform.kddi.ne.jp/developer/api/cloud-stack-api/use/)を参考にして入手してください。
 
 ## 3. Provider Pluginのインストール
 
-Provider PluginはGoバイナリです。ソースコードからバイナリをビルドします。
+Provider PluginはGoバイナリです。ソースコードをダウンロードしてバイナリファイルを作成します。
 
 ```sh
 $ git clone https://github.com/ezoiwana/terraform-provider-kcps

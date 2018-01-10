@@ -17,7 +17,7 @@ func dataSourceKcpsSnapshot() *schema.Resource {
 				Optional: true,
 				Computed: true,
 			},
-			"intervaltype": {
+			"name": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
@@ -26,16 +26,16 @@ func dataSourceKcpsSnapshot() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
+			"intervaltype": {
+				Type:     schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},
 			//KCPS doesn't return this parameter (API reference mistake)
 			"zoneid": {
 				Type:     schema.TypeString,
 				Optional: true,
 				//Computed: true,
-			},
-			"name": {
-				Type:     schema.TypeString,
-				Optional: true,
-				Computed: true,
 			},
 			"tags": {
 				Type:     schema.TypeList,

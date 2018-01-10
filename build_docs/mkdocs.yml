@@ -25,5 +25,19 @@ pages:
       - LoadBalancer: configuration/resources/loadbalancer.md
     - Data Sources:
       - Value VM: configuration/data_sources/value_vm.md
+      - Volume: configuration/data_sources/volume.md
+      - Guest OS: configuration/data_sources/guestos.md
+      - Template: configuration/data_sources/template.md
+      - Snapshot: configuration/data_sources/snapshot.md
+      - VMSnapshot: configuration/data_sources/vmsnapshot.md
+      - Snapshot Policy: configuration/data_sources/snapshot_policy.md
       - Nic: configuration/data_sources/nic.md
+      - Public IP: configuration/data_sources/publicip.md
+      - Network: configuration/data_sources/network.md
+      - ServiceOffering: configuration/data_sources/serviceoffering.md
+      - DiskOffering: configuration/data_sources/diskoffering.md
+      - Zone: configuration/data_sources/zone.md
+      - Firewall: configuration/data_sources/firewall.md
+      - NAT/PortForward: configuration/data_sources/nat_portforward.md
+      - LoadBalancer: configuration/data_sources/loadbalancer.md
 

@@ -22,7 +22,7 @@ resource kcps_nat_portforward "my_nat_portforward" {
 
 ## パラメータ
 
-|パラメータ名 |必須    |説明      |初期値    |タイプ    |備考|
+|パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
 |`ipaddressid` |◯|PortForwardingルールを設定するIPアドレスのID  | - | string | - |
 |`protocol`   |◯|プロトコル           | - | string | TCPまたはUDP |
@@ -35,7 +35,7 @@ resource kcps_nat_portforward "my_nat_portforward" {
 
 ## port
 
-|パラメータ名 |必須    |説明      |初期値    |タイプ    |備考|
+|パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
 |`privateport` |◯|開始プライベート  | - | int | - |
 |`publicport`   |◯|開始パブリックポート | - | int | - |
@@ -43,7 +43,7 @@ resource kcps_nat_portforward "my_nat_portforward" {
 |`publicendport`   |-|終了パブリックポート | - | int | - |
 
 ## 属性
-|属性名 |説明      |備考 |
+|属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |リソースID   | - | 
 |`ipaddress`    |IPアドレス | - | 
