@@ -142,7 +142,63 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../configuration/data_sources/volume/">Volume</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/guestos/">Guest OS</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/template/">Template</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/snapshot/">Snapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/vmsnapshot/">VMSnapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/snapshot_policy/">Snapshot Policy</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../configuration/data_sources/nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/publicip/">Public IP</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/network/">Network</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/serviceoffering/">ServiceOffering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/diskoffering/">DiskOffering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/zone/">Zone</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/firewall/">Firewall</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/nat_portforward/">NAT/PortForward</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../configuration/data_sources/loadbalancer/">LoadBalancer</a>
                 </li>
     </ul>
                 </li>
@@ -188,10 +244,10 @@
 </code></pre>
 
 <h2 id="2-api">2. APIキーと秘密キーの取得</h2>
-<p>TerraformからKDDI Cloud Platform Serviceを操作するためには、APIを叩くのに使用する各種キーが必要です。</p>
+<p>TerraformからKDDI Cloud Platform Serviceを操作するには、APIを利用するための各種キーが必要です。</p>
 <p>KDDIクラウドプラットフォームナレッジサイトの<a href="https://iaas.cloud-platform.kddi.ne.jp/developer/api/cloud-stack-api/use/">API利用準備</a>を参考にして入手してください。</p>
 <h2 id="3-provider-plugin">3. Provider Pluginのインストール</h2>
-<p>Provider PluginはGoバイナリです。ソースコードからバイナリをビルドします。</p>
+<p>Provider PluginはGoバイナリです。ソースコードをダウンロードしてバイナリファイルを作成します。</p>
 <pre><code class="sh">$ git clone https://github.com/ezoiwana/terraform-provider-kcps
 $ go build
 </code></pre>

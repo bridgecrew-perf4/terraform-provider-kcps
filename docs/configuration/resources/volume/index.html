@@ -146,7 +146,63 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../data_sources/volume/">Volume</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/guestos/">Guest OS</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/template/">Template</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/snapshot/">Snapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/vmsnapshot/">VMSnapshot</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/snapshot_policy/">Snapshot Policy</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../data_sources/nic/">Nic</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/publicip/">Public IP</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/network/">Network</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/serviceoffering/">ServiceOffering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/diskoffering/">DiskOffering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/zone/">Zone</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/firewall/">Firewall</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/nat_portforward/">NAT/PortForward</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../data_sources/loadbalancer/">LoadBalancer</a>
                 </li>
     </ul>
                 </li>
@@ -222,14 +278,14 @@
 <th align="left">説明</th>
 <th align="left">初期値</th>
 <th align="left">タイプ</th>
-<th align="left">備考</th>
+<th align="left">補足</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left"><code>name</code></td>
 <td align="left">◯</td>
-<td align="left">ボリューム名</td>
+<td align="left">Volume名</td>
 <td align="left">-</td>
 <td align="left">string</td>
 <td align="left">-</td>
@@ -237,7 +293,7 @@
 <tr>
 <td align="left"><code>diskoffering</code></td>
 <td align="left">注1</td>
-<td align="left">ディスクオファリングの設定(ディスクからボリュームを作成する場合に必要)</td>
+<td align="left">Disk Offeringの設定(Disk OfferingからVolumeを作成する場合に必要)</td>
 <td align="left">-</td>
 <td align="left">list(map)</td>
 <td align="left">詳細は後述</td>
@@ -245,7 +301,7 @@
 <tr>
 <td align="left"><code>snapshot</code></td>
 <td align="left">注1</td>
-<td align="left">スナップショットの設定(スナップショットからボリュームを作成する場合に必要)</td>
+<td align="left">Snapshotの設定(SnapshotからVolumeを作成する場合に必要)</td>
 <td align="left">-</td>
 <td align="left">list(map)</td>
 <td align="left">詳細は後述</td>
@@ -253,7 +309,7 @@
 <tr>
 <td align="left"><code>attachto</code></td>
 <td align="left">-</td>
-<td align="left">ボリュームをアタッチするVMのID</td>
+<td align="left">VolumeをアタッチするVMのID</td>
 <td align="left">-</td>
 <td align="left">string</td>
 <td align="left">-</td>
@@ -270,14 +326,14 @@
 <th align="left">説明</th>
 <th align="left">初期値</th>
 <th align="left">タイプ</th>
-<th align="left">備考</th>
+<th align="left">補足</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left"><code>diskofferingid</code></td>
 <td align="left">◯</td>
-<td align="left">ディスクオファリングのID</td>
+<td align="left">Disk OfferingのID</td>
 <td align="left">-</td>
 <td align="left">string</td>
 <td align="left">-</td>
@@ -285,7 +341,7 @@
 <tr>
 <td align="left"><code>size</code></td>
 <td align="left">◯</td>
-<td align="left">ディスクのサイズ</td>
+<td align="left">Diskのサイズ</td>
 <td align="left">-</td>
 <td align="left">int</td>
 <td align="left">-</td>
@@ -293,7 +349,7 @@
 <tr>
 <td align="left"><code>zoneid</code></td>
 <td align="left">◯</td>
-<td align="left">ゾーンのID</td>
+<td align="left">ZoneのID</td>
 <td align="left">-</td>
 <td align="left">string</td>
 <td align="left">-</td>
@@ -309,14 +365,14 @@
 <th align="left">説明</th>
 <th align="left">初期値</th>
 <th align="left">タイプ</th>
-<th align="left">備考</th>
+<th align="left">補足</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left"><code>snapshotid</code></td>
 <td align="left">◯</td>
-<td align="left">スナップショットのID</td>
+<td align="left">SnapshotのID</td>
 <td align="left">-</td>
 <td align="left">string</td>
 <td align="left">-</td>
@@ -329,7 +385,7 @@
 <tr>
 <th align="left">属性名</th>
 <th align="left">説明</th>
-<th align="left">備考</th>
+<th align="left">補足</th>
 </tr>
 </thead>
 <tbody>
