@@ -17,7 +17,7 @@ resource kcps_nic "my_nic"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`networkid`           |◯|ネットワークのID                | - | string | - |
+|`networkid`           |◯|NetworkのID                | - | string | - |
 |`virtualmachineid`   |◯|Nicを搭載させるVMのID  | - | string | - |
 |`secondaryip`          |-|Nicに割り当てるセカンダリーIP        | - | list(string) | - |
 

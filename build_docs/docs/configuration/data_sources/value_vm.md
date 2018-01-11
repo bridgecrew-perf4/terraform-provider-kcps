@@ -16,10 +16,10 @@ data kcps_value_vm "my_vm"{
 |`valuevm_id` |-|VMのID | - | string | - |
 |`keyword` |-|キーワード | - | string | - |
 |`name` |-|VMの名前  | - | string | - |
-|`networkid` |-|VMが接続しているネットワークのID  | - | string | - |
+|`networkid` |-|VMが接続しているNetworkのID  | - | string | - |
 |`state` |-|VMの状態  | - | string | - |
-|`templateid` |-|VM作成時に使用したテンプレートのID  | - | string | - |
-|`zoneid` |-|ゾーンのID  | - | string | - |
+|`templateid` |-|VM作成時に使用したTemplateのID  | - | string | - |
+|`zoneid` |-|ZoneのID  | - | string | - |
 
 
 
@@ -29,12 +29,12 @@ data kcps_value_vm "my_vm"{
 |`id`          |データソースID   | - | 
 |`valuevm_id`  |VMのID  | `id`と同じ値 |
 |`name`  |VMの名前  | - |
-|`templateid`  |VM作成時に使用したテンプレートのID   | - |
-|`zoneid`  |ゾーンのID   | - |
-|`diskofferingid`  |ディスクオファリングのID   | - |
+|`templateid`  |VM作成時に使用したTemplateのID   | - |
+|`zoneid`  |ZoneのID   | - |
+|`diskofferingid`  |Disk OfferingのID   | - |
 |`hypervisor`  |ハイパーバイザ   | - |
-|`publicip`  |StaticNATルールを使用してVMに関連付けられたパブリックIPアドレス   | StaticNATを有効化する必要があります |
-|`publicipid`  |StaticNATルールを使用してVMに関連付けられたパブリックIPアドレスのID   | StaticNATを有効化する必要があります |
-|`serviceofferingid`  |サービスオファリングのID   | - |
+|`publicip`  |StaticNATルールを使用してVMに関連付けられたPublic IPのIPアドレス   | StaticNATを有効化する必要があります |
+|`publicipid`  |StaticNATルールを使用してVMに関連付けられたPublic IPのID   | StaticNATを有効化する必要があります |
+|`serviceofferingid`  |Service OfferingのID   | - |
 |`isoid`  |VMにアタッチされているISOのID   | - |
  

@@ -12,23 +12,23 @@ data kcps_volume "my_volume"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`volume_id` |-|ボリュームのID | - | string | - |
+|`volume_id` |-|VolumeのID | - | string | - |
 |`keyword` |-|キーワード | - | string | - |
-|`name` |-|ボリュームの名前  | - | string | - |
-|`type` |-|ボリュームのタイプ  | - | string | - |
-|`virtualmachineid` |-|ボリュームがアタッチされているVMのID  | - | string | - |
-|`zoneid` |-|ゾーンのID  | - | string | - |
+|`name` |-|Volumeの名前  | - | string | - |
+|`type` |-|Volumeのタイプ  | - | string | - |
+|`virtualmachineid` |-|VolumeがアタッチされているVMのID  | - | string | - |
+|`zoneid` |-|ZoneのID  | - | string | - |
 
 
 ## 属性
 |属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |データソースID   | - | 
-|`volume_id`  |ボリュームのID  | `id`と同じ値 |
-|`name`  |ボリュームの名前  | - |
-|`type` |ボリュームのタイプ  | - |
-|`virtualmachineid` |ボリュームがアタッチされているVMのID  | - |
-|`zoneid`  |ゾーンのID   | - |
-|`diskofferingid`  |ディスクオファリングのID   | - |
-|`serviceofferingid`  |サービスオファリングのID   | - |
+|`volume_id`  |VolumeのID  | `id`と同じ値 |
+|`name`  |Volumeの名前  | - |
+|`type` |Volumeのタイプ  | - |
+|`virtualmachineid` |VolumeがアタッチされているVMのID  | - |
+|`zoneid`  |ZoneのID   | - |
+|`diskofferingid`  |Disk OfferingのID   | - |
+|`serviceofferingid`  |Service OfferingのID   | - |
  

@@ -13,8 +13,8 @@ data kcps_snapshot_policy "my_snapshot_policy"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`volumeid` |◯|ボリュームのID | - | string | - |
-|`snapshot_policy_id` |-|定期スナップショットのID | - | string | - |
+|`volumeid` |◯|VolumeのID | - | string | - |
+|`snapshot_policy_id` |-|定期SnapshotのID | - | string | - |
 
 
 
@@ -24,8 +24,8 @@ data kcps_snapshot_policy "my_snapshot_policy"{
 |属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |データソースID   | - | 
-|`snapshot_policy_id`  |定期スナップショットのID  | `id`と同じ値 |
-|`intervaltype`  | スナップショットを作成する間隔  | - |
-|`maxsnaps` | スナップショットの保持数 | - | 
-|`schedule` |スナップショットを作成する時間  | - |
+|`snapshot_policy_id`  |定期SnapshotのID  | `id`と同じ値 |
+|`intervaltype`  | Snapshotを作成する間隔  | - |
+|`maxsnaps` | Snapshotの保持数 | - | 
+|`schedule` |Snapshotを作成する時間  | - |
 |`timezone` |タイムゾーン  | - |

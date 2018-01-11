@@ -1,4 +1,4 @@
-# VM Snapshot
+# VMSnapshot
 
 ## 使用例
 
@@ -14,7 +14,7 @@ resource kcps_vmsnapshot "my_vmsnapshot"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`virtualmachineid` |◯|スナップショットを作成に使用するVMのID | - | string | - |
+|`virtualmachineid` |◯|VMSnapshotの作成に使用するVMのID | - | string | - |
 |`displayname`   |◯|表示名         | - | string | - |
 
 

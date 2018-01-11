@@ -13,24 +13,25 @@ data kcps_template "my_template"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`templatefilter` |◯|テンプレートの検索条件 | - | string | - |
-|`template_id` |-|テンプレートのID | - | string | - |
-|`name` |-|テンプレートの名前  | - | string | - |
+|`templatefilter` |◯|Templateの検索条件 | - | string | - |
+|`template_id` |-|TemplateのID | - | string | - |
+|`name` |-|Templateの名前  | - | string | - |
 |`keyword` |-|キーワード | - | string | - |
-|`zoneid` |-|ゾーンのID  | - | string | - |
+|`zoneid` |-|ZoneのID  | - | string | - |
 
 
 ## 属性
 |属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |データソースID   | - | 
-|`template_id`  |テンプレートのID  | `id`と同じ値 |
-|`name`  |テンプレートの名前  | - |
-|`zoneid`  |ゾーンのID   | - |
-|`format` |テンプレートのフォーマット | - |
+|`template_id`  |TemplateのID  | `id`と同じ値 |
+|`name`  |Templateの名前  | - |
+|`zoneid`  |ZoneのID   | - |
+|`format` |Templateのフォーマット | - |
 |`hypervisor` |ハイパーバイザ  | - |
 |`isdynamicallyscalable` |動的スケーリング  | - |
 |`ispublic`  |公開レベル   | - |
 |`passwordenabled`  |パスワードが有効であるか   | - |
 |`ostypeid`  |OSタイプのID   | - |
+|`displaytext`  |表示テキスト   | - |
  

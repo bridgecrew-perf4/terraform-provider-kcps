@@ -37,11 +37,11 @@ func dataSourceKcpsNatPortForward() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"privateendport": {
+			"privateport": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
-			"privateport": {
+			"privateendport": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
@@ -49,11 +49,11 @@ func dataSourceKcpsNatPortForward() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"publicendport": {
+			"publicport": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
-			"publicport": {
+			"publicendport": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},

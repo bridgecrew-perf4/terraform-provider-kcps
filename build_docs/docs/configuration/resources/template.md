@@ -22,11 +22,11 @@ resource kcps_template "my_template" {
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`name`          |◯|テンプレートの名前          | - | string | - |
-|`displaytext`   |◯|使用目的の記述  | - | string | - |
+|`name`          |◯|Templateの名前          | - | string | - |
+|`displaytext`   |◯|表示テキスト  | - | string | - |
 |`ostypeid`      |◯|OSタイプのID   | - | string | - |
-|`snapshotid`    |注1|テンプレート作成に使用するスナップショットのID               | - | string | - |
-|`volumeid`      |注1|テンプレート作成に使用するボリュームのID     | - | string | - |
+|`snapshotid`    |注1|Template作成に使用するSnapshotのID               | - | string | - |
+|`volumeid`      |注1|Template作成に使用するVolumeのID     | - | string | - |
 |`isdynamicallyscalable`   |-|動的スケーリング  | false | bool | - |
 |`passwordenabled`   |-|パスワード有効化  | false | bool | - |
 |`ispublic`   |-|公開レベル  | false | bool | - |

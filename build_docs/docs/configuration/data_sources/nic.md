@@ -15,7 +15,7 @@ data kcps_nic "my_nic"{
 |:----------|:------|:---------|:--------|:--------|:--|
 |`virtualmachineid` |◯|キーワード | - | string | - |
 |`nic_id` |-|NicのID | - | string | - |
-|`networkid` |-|ネットワークのID  | - | string | APIにはない機能 |
+|`networkid` |-|NetworkのID  | - | string | APIにはない機能 |
 
 
 
@@ -25,7 +25,7 @@ data kcps_nic "my_nic"{
 |:----------|:------|:---------|
 |`id`          |データソースID   | - | 
 |`nic_id`  |NicのID  | `id`と同じ値 |
-|`networkid` |ネットワークのID  | - |
+|`networkid` |NetworkのID  | - |
 |`ipaddress`  |IPアドレス  | - |
 |`ip6address`  |IPv6アドレス   | - |
 |`macaddress`  |MACアドレス   | - |

@@ -1,10 +1,10 @@
-# Network
+# Service Offering
 
 ## 使用例
 
 ```hcl
-data kcps_network "my_network"{
-    name = "PublicFrontSegment"
+data kcps_service_offering "my_service_offering"{
+    name = "Small1(1vCPU,Mem2GB)"
 }
 ```
 
@@ -12,10 +12,9 @@ data kcps_network "my_network"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`network_id` |-|NetworkのID | - | string | - |
-|`name` |-|Networkの名前 | - | string | - |
+|`serviceoffering_id` |-|Service OfferingのID | - | string | - |
+|`name` |-|Service Offeringの名前 | - | string | - |
 |`keyword` |-|キーワード | - | string | - |
-|`zoneid` |-|ZoneのID | - | string | - |
 
 
 ## 属性
@@ -23,9 +22,8 @@ data kcps_network "my_network"{
 |属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |データソースID   | - | 
-|`network_id`  |NetworkのID  | `id`と同じ値 |
-|`name` |Networkの名前 | - |
-|`zoneid` |ZoneのID | - | 
+|`serviceoffering_id`  |Service OfferingのID  | `id`と同じ値 |
+|`name` |Service Offeringの名前 | - |
 
 
  

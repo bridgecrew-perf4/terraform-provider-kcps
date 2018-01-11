@@ -26,10 +26,10 @@ resource kcps_volume "my_volume" {
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`name`           |◯|ボリューム名               | - | string | - |
-|`diskoffering`   |注1|ディスクオファリングの設定(ディスクからボリュームを作成する場合に必要)  | - | list(map) | 詳細は後述 |
-|`snapshot`       |注1|スナップショットの設定(スナップショットからボリュームを作成する場合に必要)  | - | list(map) | 詳細は後述 |
-|`attachto`       |-|ボリュームをアタッチするVMのID      | - | string | - |
+|`name`           |◯|Volume名               | - | string | - |
+|`diskoffering`   |注1|Disk Offeringの設定(Disk OfferingからVolumeを作成する場合に必要)  | - | list(map) | 詳細は後述 |
+|`snapshot`       |注1|Snapshotの設定(SnapshotからVolumeを作成する場合に必要)  | - | list(map) | 詳細は後述 |
+|`attachto`       |-|VolumeをアタッチするVMのID      | - | string | - |
 
 
 注1: `diskoffering`か`snapshot`どちらかを設定する必要があります。
@@ -39,16 +39,16 @@ resource kcps_volume "my_volume" {
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`diskofferingid`      |◯|ディスクオファリングのID  | - | string | - |
-|`size`   |◯|ディスクのサイズ | - | int | - |
-|`zoneid`   |◯|ゾーンのID | - | string | - |
+|`diskofferingid`      |◯|Disk OfferingのID  | - | string | - |
+|`size`   |◯|Diskのサイズ | - | int | - |
+|`zoneid`   |◯|ZoneのID | - | string | - |
 
 
 ## snapshot
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`snapshotid`      |◯|スナップショットのID  | - | string | - |
+|`snapshotid`      |◯|SnapshotのID  | - | string | - |
 
 
 

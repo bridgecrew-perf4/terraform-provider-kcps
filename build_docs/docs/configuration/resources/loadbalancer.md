@@ -19,12 +19,12 @@ resource kcps_loadbalancer "my_loadbalancer" {
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`name`         |◯|ロードバランサーの名前  | - | string | - |
-|`algorithm`   |◯|ロードバランサーのアルゴリズム | - | string | source、roundrobin、leastconnの内のどれか |
+|`name`         |◯|Load Balancerの名前  | - | string | - |
+|`algorithm`   |◯|Load Balancerのアルゴリズム | - | string | source、roundrobin、leastconnの内のどれか |
 |`privateport`    |◯|プライベートポート    | - | int | - |
 |`publicport`     |◯|パブリックポート     | - | int | - |
-|`publicipid` |◯|ロードバランサーを設定するパブリックIPアドレス  | - | string | - |
-|`assignto`        |-| ロードバランサーに接続するVMのID | - | list(string) | - |
+|`publicipid` |◯|Load Balancerを設定するPublic IPのID  | - | string | - |
+|`assignto`        |-| Load Balancerに接続するVMのID | - | list(string) | - |
 
 
 

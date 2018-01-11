@@ -38,6 +38,10 @@ func dataSourceKcpsFirewall() *schema.Resource {
 				Computed: true,
 				Elem:     &schema.Schema{Type: schema.TypeString},
 			},
+			"startport": {
+				Type:     schema.TypeInt,
+				Computed: true,
+			},
 			"endport": {
 				Type:     schema.TypeInt,
 				Computed: true,
@@ -56,10 +60,6 @@ func dataSourceKcpsFirewall() *schema.Resource {
 			},
 			"protocol": {
 				Type:     schema.TypeString,
-				Computed: true,
-			},
-			"startport": {
-				Type:     schema.TypeInt,
 				Computed: true,
 			},
 			"tags": {

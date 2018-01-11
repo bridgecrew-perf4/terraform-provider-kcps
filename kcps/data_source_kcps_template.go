@@ -80,6 +80,10 @@ func dataSourceKcpsTemplate() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+			"displaytext": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
 		},
 	}
 }
@@ -132,6 +136,7 @@ func dataSourceKcpsTemplateRead(d *schema.ResourceData, meta interface{}) error 
 	d.Set("ispublic", v.Ispublic)
 	d.Set("ostypeid", v.Ostypeid)
 	d.Set("passwordenabled", v.Passwordenabled)
+	d.Set("displaytext", v.Displaytext)
 	d.Set("tags", flattenTags(v.Tags))
 
 	d.SetId(v.Id)

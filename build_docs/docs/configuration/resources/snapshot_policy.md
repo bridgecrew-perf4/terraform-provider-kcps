@@ -17,11 +17,11 @@ resource kcps_snapshot_policy "my_snapshot_policy"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`intervaltype` |◯|スナップショットを作成する間隔  | - | string | DAILY、WEEKLY、MONTHLYの内のどれか |
-|`maxsnaps`   |◯|スナップショットの保持数           | - | int | - |
-|`schedule`    |◯| スナップショットを作成する時間       | - | string | フォーマットについては後述 |
+|`intervaltype` |◯|Snapshotを作成する間隔  | - | string | DAILY、WEEKLY、MONTHLYの内のどれか |
+|`maxsnaps`   |◯|Snapshotの保持数           | - | int | - |
+|`schedule`    |◯| Snapshotを作成する時間       | - | string | フォーマットについては後述 |
 |`timezone` |◯|タイムゾーン     | - | string | - |
-|`volumeid` |◯|スナップショット作成に使用するボリュームのID  | - | string | - |
+|`volumeid` |◯|Snapshot作成に使用するVolumeのID  | - | string | - |
 
 
 ## scheduleのフォーマット

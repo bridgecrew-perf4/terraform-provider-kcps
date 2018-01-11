@@ -19,7 +19,7 @@ resource "kcps_publicip" "my_publicip" {
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`networkid`    |◯|ネットワークID  | - | string | - |
+|`networkid`    |◯|NetworkID  | - | string | - |
 |`staticnat` |-|静的NATの設定   | - | list(map) | 詳細は後述 |
 
 ## staticnat

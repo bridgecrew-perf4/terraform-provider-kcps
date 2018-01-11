@@ -12,10 +12,10 @@ data kcps_vmsnapshot "my_vmsnapshot"{
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`vmsnapshot_id` |-|スナップショットのID | - | string | - |
-|`displayname` |-|VMスナップショットの名前  | - | string | - |
+|`vmsnapshot_id` |-|SnapshotのID | - | string | - |
+|`displayname` |-|VMSnapshotの名前  | - | string | - |
 |`state` |-|状態 | - | string | - |
-|`virtualmachineid` |-|VMスナップショット作成に使用したVMのID | - | string | - |
+|`virtualmachineid` |-|VMSnapshot作成に使用したVMのID | - | string | - |
 
 
 
@@ -23,7 +23,7 @@ data kcps_vmsnapshot "my_vmsnapshot"{
 |属性名 |説明      |補足 |
 |:----------|:------|:---------|
 |`id`          |データソースID   | - | 
-|`vmsnapshot_id`  |スナップショットのID  | `id`と同じ値 |
-|`displayname`  | VMスナップショットの名前  | - |
+|`vmsnapshot_id`  |SnapshotのID  | `id`と同じ値 |
+|`displayname`  | VMSnapshotの名前  | - |
 |`state` | 状態 | - | 
-|`virtualmachineid` |VMスナップショット作成に使用したVMのID  | - |
+|`virtualmachineid` |VMSnapshot作成に使用したVMのID  | - |

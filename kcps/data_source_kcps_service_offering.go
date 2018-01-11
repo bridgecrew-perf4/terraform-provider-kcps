@@ -25,7 +25,6 @@ func dataSourceKcpsServiceOffering() *schema.Resource {
 			"keyword": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Computed: true,
 			},
 		},
 	}

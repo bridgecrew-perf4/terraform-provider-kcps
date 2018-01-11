@@ -26,16 +26,16 @@ resource kcps_value_vm "my_vm" {
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
 |`name`                |◯|VMの名前                | - | string | - |
-|`serviceofferingid`   |◯|サービスオファリングのID  | - | string | - |
-|`templateid`          |◯|テンプレートのID        | - | string | - |
-|`zoneid`              |◯|ゾーンのID               | - | string | - |
-|`diskoffering`        |-|ディスクオファリング    | - | list(map) | 詳細は後述 |
+|`serviceofferingid`   |◯|Service OfferingのID  | - | string | - |
+|`templateid`          |◯|TemplateのID        | - | string | - |
+|`zoneid`              |◯|ZoneのID               | - | string | - |
+|`diskoffering`        |-|Disk Offering    | - | list(map) | 詳細は後述 |
 
 ## diskoffering
 
 |パラメータ名 |必須    |説明      |初期値    |タイプ    |補足|
 |:----------|:------|:---------|:--------|:--------|:--|
-|`diskofferingid`      |◯|ディスクオファリングのID  | - | string | - |
+|`diskofferingid`      |◯|Disk OfferingのID  | - | string | - |
 |`size`   |◯|ディスクのサイズ | - | int | - |
 
 
@@ -44,4 +44,4 @@ resource kcps_value_vm "my_vm" {
 |:----------|:------|:---------|
 |`id`          |リソースID              | - | 
 |`password`    |VMのパスワード | 設定されているならば取得できます | 
-|`publicip`    | StaticNATルールを使用してVMに関連付けられたパブリックIPアドレスのID     | StaticNATを有効化する必要があります |
+|`publicip`    | StaticNATルールを使用してVMに関連付けられたPublic IPのID     | StaticNATを有効化する必要があります |
