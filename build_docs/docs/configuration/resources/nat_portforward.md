@@ -19,6 +19,12 @@ resource kcps_nat_portforward "my_nat_portforward" {
 }
 ```
 
+## 注意事項
+
+KCPSのAPIコマンド`createPortForwardingRule`は自動でFirewallのルールを追加してしまいますが、terraform-provider-kcpsのPortForwardingルール作成時にはFirewallのルールは追加しません。
+
+ちなみにFirewallルール自動追加の原因は、APIリファレンスには記載されていないパラメータ`openfirewall`がtrueになっているためです。
+
 
 ## パラメータ
 
