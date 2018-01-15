@@ -117,11 +117,13 @@
         
             <li><a class="toctree-l5" href="#_1">使用例</a></li>
         
-            <li><a class="toctree-l5" href="#_2">パラメータ</a></li>
+            <li><a class="toctree-l5" href="#_2">注意事項</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">パラメータ</a></li>
         
             <li><a class="toctree-l5" href="#port">port</a></li>
         
-            <li><a class="toctree-l5" href="#_3">属性</a></li>
+            <li><a class="toctree-l5" href="#_4">属性</a></li>
         
         </ul>
     
@@ -265,7 +267,10 @@
 }
 </code></pre>
 
-<h2 id="_2">パラメータ</h2>
+<h2 id="_2">注意事項</h2>
+<p>KCPSのAPIコマンド<code>createPortForwardingRule</code>は自動でFirewallのルールを追加してしまいますが、terraform-provider-kcpsのPortForwardingルール作成時にはFirewallのルールは追加しません。</p>
+<p>ちなみにFirewallルール自動追加の原因は、APIリファレンスには記載されていないパラメータ<code>openfirewall</code>がtrueになっているためです。</p>
+<h2 id="_3">パラメータ</h2>
 <table>
 <thead>
 <tr>
@@ -367,7 +372,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_3">属性</h2>
+<h2 id="_4">属性</h2>
 <table>
 <thead>
 <tr>

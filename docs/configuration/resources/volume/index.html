@@ -85,13 +85,15 @@
         
             <li><a class="toctree-l5" href="#_1">使用例</a></li>
         
-            <li><a class="toctree-l5" href="#_2">パラメータ</a></li>
+            <li><a class="toctree-l5" href="#_2">注意事項</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">パラメータ</a></li>
         
             <li><a class="toctree-l5" href="#diskoffering">diskoffering</a></li>
         
             <li><a class="toctree-l5" href="#snapshot">snapshot</a></li>
         
-            <li><a class="toctree-l5" href="#_3">属性</a></li>
+            <li><a class="toctree-l5" href="#_4">属性</a></li>
         
         </ul>
     
@@ -269,7 +271,9 @@
 
 </code></pre>
 
-<h2 id="_2">パラメータ</h2>
+<h2 id="_2">注意事項</h2>
+<p>Snapshotを用いてVolumeリソースを作成する場合、リソース作成時に同時<code>attachto</code>の設定をしていると高確率でボリュームのアタッチに失敗します。原因はよくわかっていません。</p>
+<h2 id="_3">パラメータ</h2>
 <table>
 <thead>
 <tr>
@@ -379,7 +383,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_3">属性</h2>
+<h2 id="_4">属性</h2>
 <table>
 <thead>
 <tr>
