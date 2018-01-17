@@ -57,12 +57,12 @@ func testAccCheckDataSourceKcpsVMSnapshot() resource.TestCheckFunc {
 		rsFullName := "kcps_vmsnapshot.a"
 		ds, ok := s.RootModule().Resources[dsFullName]
 		if !ok {
-			return fmt.Errorf("cant' find resource called %s in state", dsFullName)
+			return fmt.Errorf("cant' find data source called %s in state", dsFullName)
 		}
 
 		rs, ok := s.RootModule().Resources[rsFullName]
 		if !ok {
-			return fmt.Errorf("can't find data source called %s in state", rsFullName)
+			return fmt.Errorf("can't find resource called %s in state", rsFullName)
 		}
 
 		dsAttrs := ds.Primary.Attributes
@@ -81,7 +81,7 @@ func testAccCheckDataSourceKcpsVMSnapshot() resource.TestCheckFunc {
 			}
 			rsAttr, ok := rsAttrs[attrName]
 			if !ok {
-				return fmt.Errorf("can't find '%s' attribute in data source", attrName)
+				return fmt.Errorf("can't find '%s' attribute in resource", attrName)
 			}
 
 			if dsAttr != rsAttr {

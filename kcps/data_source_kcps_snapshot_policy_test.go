@@ -9,29 +9,29 @@ import (
 	gk "github.com/uesyn/gokcps"
 )
 
-func TestAccDataSourceKcpsValueVM(t *testing.T) {
+func TestAccDataSourceKcpsSnapshotPolicy(t *testing.T) {
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
 		Providers:    testAccProviders,
-		CheckDestroy: testAccCheckKcpsValueVMDestroy,
+		CheckDestroy: testAccCheckKcpsSnapshotPolicyDestroy,
 		Steps: []resource.TestStep{
 
 			{
-				Config: testAccDataSourceKcpsValueVMConfig(),
+				Config: testAccDataSourceKcpsSnapshotPolicyConfig(),
 				Check: resource.ComposeTestCheckFunc(
-					testAccCheckDataSourceKcpsValueVM(),
+					testAccCheckDataSourceKcpsSnapshotPolicy(),
 				),
 			},
 		},
 	})
 }
 
-func testAccCheckKcpsValueVMDestroy(s *terraform.State) error {
+func testAccCheckKcpsSnapshotPolicyDestroy(s *terraform.State) error {
 	cli := testAccProvider.Meta().(*gk.KCPSClient)
 
 	for _, rs := range s.RootModule().Resources {
-		if rs.Type != "kcps_value_vm" {
+		if rs.Type != "kcps_snapshot_policy" {
 			continue
 		}
 
@@ -39,30 +39,31 @@ func testAccCheckKcpsValueVMDestroy(s *terraform.State) error {
 			continue
 		}
 
-		p := cli.VirtualMachine.NewListVirtualMachinesParams()
-		p.SetId(rs.Primary.ID)
+		p := cli.Snapshot.NewListSnapshotPoliciesParams()
+		p.SetVolumeid(rs.Primary.ID)
 
-		r, _ := cli.VirtualMachine.ListVirtualMachines(p)
-		if r.VirtualMachines != nil {
-			return fmt.Errorf("ValueVM still exists")
+		_, err := cli.Snapshot.ListSnapshotPolicies(p)
+
+		if err == nil {
+			return fmt.Errorf("SnapshotPolicy still exists")
 		}
 	}
 
 	return nil
 }
 
-func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
+func testAccCheckDataSourceKcpsSnapshotPolicy() resource.TestCheckFunc {
 	return func(s *terraform.State) error {
-		dsFullName := "data.kcps_value_vm.a"
-		rsFullName := "kcps_value_vm.a"
+		dsFullName := "data.kcps_snapshot_policy.a"
+		rsFullName := "kcps_snapshot_policy.a"
 		ds, ok := s.RootModule().Resources[dsFullName]
 		if !ok {
-			return fmt.Errorf("cant' find data source called %s in state", dsFullName)
+			return fmt.Errorf("cant' find resource called %s in state", dsFullName)
 		}
 
 		rs, ok := s.RootModule().Resources[rsFullName]
 		if !ok {
-			return fmt.Errorf("can't find resource called %s in state", rsFullName)
+			return fmt.Errorf("can't find data source called %s in state", rsFullName)
 		}
 
 		dsAttrs := ds.Primary.Attributes
@@ -70,9 +71,11 @@ func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
 
 		attrNames := []string{
 			"id",
-			"serviceofferingid",
-			"templateid",
-			"zoneid",
+			"volumeid",
+			"maxsnaps",
+			"schedule",
+			"timezone",
+			"intervaltype",
 		}
 
 		for _, attrName := range attrNames {
@@ -90,16 +93,12 @@ func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
 			}
 		}
 
-		//other attributes check
+		//check other attributes
 		dsAttrNames := []string{
-			"valuevm_id",
-			"hypervisor",
-			"name",
+			"snapshotpolicy_id",
 		}
 		dsCertainValues := []string{
 			rsAttrs["id"],
-			"VMware",
-			"v-testvma-M16503331",
 		}
 
 		for i, _ := range dsAttrNames {
@@ -117,25 +116,23 @@ func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
 				)
 			}
 		}
+
 		return nil
 	}
 }
 
-func testAccDataSourceKcpsValueVMConfig() string {
+func testAccDataSourceKcpsSnapshotPolicyConfig() string {
 	return fmt.Sprintf(`
-		resource kcps_value_vm "a" {
-			name = "testvma"
-			serviceofferingid = "e3060950-1b4f-4adb-b050-bbe99694da19"
-			templateid ="0eb72664-f7ad-4d36-be3e-4f4c32ffe0e5"
-			zoneid = "593697b6-c123-4025-b412-ef83822733e5"
-
-			diskoffering{
-				diskofferingid = "10cc47d1-2e04-4aeb-aec9-fb08d273198e"
-				size = 100
-			}
+		resource kcps_snapshot_policy "a" {
+			intervaltype = "WEEKLY"
+			maxsnaps = 3
+			schedule = "10:10:6"
+			timezone = "JST"
+			volumeid = "ffa4fba4-7468-42f6-a86c-85fe274fb8c1"
 		}
-		data "kcps_value_vm" "a" {
-			valuevm_id = "${kcps_value_vm.a.id}"
+		data "kcps_snapshot_policy" "a" {
+			volumeid = "${kcps_snapshot_policy.a.volumeid}"
+			snapshotpolicy_id = "${kcps_snapshot_policy.a.id}"
 		}
 		`)
 }

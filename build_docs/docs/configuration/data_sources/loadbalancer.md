@@ -30,7 +30,6 @@ data kcps_value_loadbalancer "my_loadbalancer"{
 |`name` |Load Balancerの名前 | - | 
 |`publicipid` |Public IPのID | - | 
 |`networkid` |ネットワークのID  | - |
-|`virtualmachineid` |VMのID  | - | 
 |`zoneid` |ZoneのID  | - | 
 |`algorithm`  |Load Balancerのアルゴリズム  | - |
 |`publicip`  |Public IPのIPアドレス   | - |

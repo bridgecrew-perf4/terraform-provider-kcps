@@ -23,7 +23,9 @@ resource kcps_volume "my_volume" {
 
 ## 注意事項
 
-Snapshotを用いてVolumeリソースを作成する場合、リソース作成時に同時`attachto`の設定をしていると高確率でボリュームのアタッチに失敗します。原因はよくわかっていません。
+Snapshotを用いてVolumeリソースを作成する場合、リソース作成時に`attachto`の設定をしていると高確率でボリュームのアタッチに失敗します。原因はよくわかっていません。
+
+リソースを一度作成した後、`attachto`を設定し`terraform apply`を実行するとアタッチは成功します。Disk OfferingからVolumeリソースを作成する場合はこの問題は起こりません。
 
 
 ## パラメータ

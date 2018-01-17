@@ -78,7 +78,7 @@ func dataSourceKcpsSnapshotPolicyRead(d *schema.ResourceData, meta interface{}) 
 	}
 
 	d.Set("snapshotpolicy_id", v.Id)
-	d.Set("intervaltype", v.Intervaltype)
+	d.Set("intervaltype", convertIntervalType(v.Intervaltype))
 	d.Set("maxsnaps", v.Maxsnaps)
 	d.Set("schedule", v.Schedule)
 	d.Set("timezone", v.Timezone)
@@ -86,4 +86,17 @@ func dataSourceKcpsSnapshotPolicyRead(d *schema.ResourceData, meta interface{}) 
 	d.SetId(v.Id)
 
 	return nil
+}
+
+
+// API return "intervaltype id" like "2", but we need "intervaltype" like "WEEKLY"!!!!
+func convertIntervalType(num int)string {
+	if num == 1{
+		return "DAILY"
+	}else if num == 2{
+		return "WEEKLY"
+	}else if num == 3{
+		return "MONTHLY"
+	}
+	return "NOT SUPORTED"
 }

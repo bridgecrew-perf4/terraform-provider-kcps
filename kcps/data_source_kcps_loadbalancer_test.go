@@ -9,29 +9,28 @@ import (
 	gk "github.com/uesyn/gokcps"
 )
 
-func TestAccDataSourceKcpsValueVM(t *testing.T) {
+func TestAccDataSourceKcpsLoadBalancer(t *testing.T) {
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
 		Providers:    testAccProviders,
-		CheckDestroy: testAccCheckKcpsValueVMDestroy,
+		CheckDestroy: testAccCheckKcpsLoadBalancerDestroy,
 		Steps: []resource.TestStep{
-
 			{
-				Config: testAccDataSourceKcpsValueVMConfig(),
+				Config: testAccDataSourceKcpsLoadBalancerConfig(),
 				Check: resource.ComposeTestCheckFunc(
-					testAccCheckDataSourceKcpsValueVM(),
+					testAccCheckDataSourceKcpsLoadBalancer(),
 				),
 			},
 		},
 	})
 }
 
-func testAccCheckKcpsValueVMDestroy(s *terraform.State) error {
+func testAccCheckKcpsLoadBalancerDestroy(s *terraform.State) error {
 	cli := testAccProvider.Meta().(*gk.KCPSClient)
 
 	for _, rs := range s.RootModule().Resources {
-		if rs.Type != "kcps_value_vm" {
+		if rs.Type != "kcps_loadbalancer" {
 			continue
 		}
 
@@ -39,22 +38,22 @@ func testAccCheckKcpsValueVMDestroy(s *terraform.State) error {
 			continue
 		}
 
-		p := cli.VirtualMachine.NewListVirtualMachinesParams()
+		p := cli.LoadBalancer.NewListLoadBalancerRulesParams()
 		p.SetId(rs.Primary.ID)
 
-		r, _ := cli.VirtualMachine.ListVirtualMachines(p)
-		if r.VirtualMachines != nil {
-			return fmt.Errorf("ValueVM still exists")
+		_, err := cli.LoadBalancer.ListLoadBalancerRules(p)
+		if err == nil {
+			return fmt.Errorf("LoadBalancer still exists")
 		}
 	}
 
 	return nil
 }
 
-func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
+func testAccCheckDataSourceKcpsLoadBalancer() resource.TestCheckFunc {
 	return func(s *terraform.State) error {
-		dsFullName := "data.kcps_value_vm.a"
-		rsFullName := "kcps_value_vm.a"
+		dsFullName := "data.kcps_loadbalancer.a"
+		rsFullName := "kcps_loadbalancer.a"
 		ds, ok := s.RootModule().Resources[dsFullName]
 		if !ok {
 			return fmt.Errorf("cant' find data source called %s in state", dsFullName)
@@ -70,9 +69,11 @@ func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
 
 		attrNames := []string{
 			"id",
-			"serviceofferingid",
-			"templateid",
-			"zoneid",
+			"algorithm",
+			"name",
+			"privateport",
+			"publicport",
+			"publicipid",
 		}
 
 		for _, attrName := range attrNames {
@@ -92,14 +93,16 @@ func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
 
 		//other attributes check
 		dsAttrNames := []string{
-			"valuevm_id",
-			"hypervisor",
-			"name",
+			"loadbalancer_id",
+			"networkid",
+			"zoneid",
+			"publicip",
 		}
 		dsCertainValues := []string{
 			rsAttrs["id"],
-			"VMware",
-			"v-testvma-M16503331",
+			"7b921a2d-8c82-4016-bbd0-cf0dd6877408",
+			"593697b6-c123-4025-b412-ef83822733e5",
+			"27.85.233.111",
 		}
 
 		for i, _ := range dsAttrNames {
@@ -117,25 +120,25 @@ func testAccCheckDataSourceKcpsValueVM() resource.TestCheckFunc {
 				)
 			}
 		}
+
 		return nil
 	}
 }
 
-func testAccDataSourceKcpsValueVMConfig() string {
+func testAccDataSourceKcpsLoadBalancerConfig() string {
 	return fmt.Sprintf(`
-		resource kcps_value_vm "a" {
-			name = "testvma"
-			serviceofferingid = "e3060950-1b4f-4adb-b050-bbe99694da19"
-			templateid ="0eb72664-f7ad-4d36-be3e-4f4c32ffe0e5"
-			zoneid = "593697b6-c123-4025-b412-ef83822733e5"
-
-			diskoffering{
-				diskofferingid = "10cc47d1-2e04-4aeb-aec9-fb08d273198e"
-				size = 100
-			}
+		resource kcps_loadbalancer "a" {
+			algorithm = "source"
+			name = "testing"
+			privateport = 8080
+			publicport = 9080
+			publicipid = "b2a3a2b6-67ff-46d2-877b-25618824b1ae"
+		
+			assignto = ["fa608125-4658-4ff0-aab4-33a1b428988a",
+						"be4a143f-3cdd-4091-9a8c-d82c78e49ddf" ] 
 		}
-		data "kcps_value_vm" "a" {
-			valuevm_id = "${kcps_value_vm.a.id}"
+		data "kcps_loadbalancer" "a" {
+			loadbalancer_id = "${kcps_loadbalancer.a.id}"
 		}
 		`)
 }

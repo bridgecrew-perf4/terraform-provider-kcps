@@ -25,7 +25,7 @@ data kcps_snapshot_policy "my_snapshot_policy"{
 |:----------|:------|:---------|
 |`id`          |データソースID   | - | 
 |`snapshot_policy_id`  |定期SnapshotのID  | `id`と同じ値 |
-|`intervaltype`  | Snapshotを作成する間隔  | - |
+|`intervaltype`  | Snapshotを作成する間隔  | KCPSのAPIではinterval typeのIDが返されますが、これらをProvider Plugin内部でWEEKLYなどの文字列に変換して提供します |
 |`maxsnaps` | Snapshotの保持数 | - | 
 |`schedule` |Snapshotを作成する時間  | - |
 |`timezone` |タイムゾーン  | - |
