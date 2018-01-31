@@ -272,7 +272,8 @@
 </code></pre>
 
 <h2 id="_2">注意事項</h2>
-<p>Snapshotを用いてVolumeリソースを作成する場合、リソース作成時に同時<code>attachto</code>の設定をしていると高確率でボリュームのアタッチに失敗します。原因はよくわかっていません。</p>
+<p>Snapshotを用いてVolumeリソースを作成する場合、リソース作成時に<code>attachto</code>の設定をしていると高確率でボリュームのアタッチに失敗します。原因はよくわかっていません。</p>
+<p>リソースを一度作成した後、<code>attachto</code>を設定し<code>terraform apply</code>を実行するとアタッチは成功します。Disk OfferingからVolumeリソースを作成する場合はこの問題は起こりません。</p>
 <h2 id="_3">パラメータ</h2>
 <table>
 <thead>
