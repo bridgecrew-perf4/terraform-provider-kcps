@@ -20,7 +20,10 @@ KDDIクラウドプラットフォームナレッジサイトの[API利用準備
 Provider PluginはGoバイナリです。ソースコードをダウンロードしてバイナリファイルを作成します。
 
 ```sh
+$ mkdir -p $GOPATH/src/github.com/ezoiwana
+$ cd $GOPATH/src/github.com/ezoiwana
 $ git clone https://github.com/ezoiwana/terraform-provider-kcps
+$ cd terraform-provider-kcps
 $ go build
 ```
 

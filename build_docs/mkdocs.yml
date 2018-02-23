@@ -9,6 +9,7 @@ extra_css:
 pages:
   - Home: index.md
   - Install: installation.md
+  - Examples: examples.md
   - Configuration:
     - Provider: configuration/provider.md
     - Resources:

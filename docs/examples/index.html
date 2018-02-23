@@ -8,7 +8,7 @@
   
   <meta name="author" content="@ezoiwana">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Install - terraform-provider-kcps</title>
+  <title>Examples - terraform-provider-kcps</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Install";
-    var mkdocs_page_input_path = "installation.md";
-    var mkdocs_page_url = "/installation/";
+    var mkdocs_page_name = "Examples";
+    var mkdocs_page_input_path = "examples.md";
+    var mkdocs_page_url = "/examples/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -53,30 +53,26 @@
     <a class="" href="..">Home</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Install</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Install</a>
+    <a class="current" href="./">Examples</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#installation">Installation</a></li>
+    <li class="toctree-l2"><a href="#examples">Examples</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#1-terraform">1. Terraformのインストール</a></li>
-        
-            <li><a class="toctree-l3" href="#2-api">2. APIキーと秘密キーの取得</a></li>
-        
-            <li><a class="toctree-l3" href="#3-provider-plugin">3. Provider Pluginのインストール</a></li>
+            <li><a class="toctree-l3" href="#1-value-virtual-machinessh">1. Value Virtual Machineを複数台作成してSSH接続できるようにする</a></li>
         
         </ul>
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../examples/">Examples</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -232,7 +228,7 @@
     
       
     
-    <li>Install</li>
+    <li>Examples</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -242,28 +238,114 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="installation">Installation</h1>
-<h2 id="1-terraform">1. Terraformのインストール</h2>
-<p>MacであればHomebrewでインストール可能です。</p>
-<pre><code class="sh">$ brew install terraform
-</code></pre>
-
-<h2 id="2-api">2. APIキーと秘密キーの取得</h2>
-<p>TerraformからKDDI Cloud Platform Serviceを操作するには、APIを利用するための各種キーが必要です。</p>
-<p>KDDIクラウドプラットフォームナレッジサイトの<a href="https://iaas.cloud-platform.kddi.ne.jp/developer/api/cloud-stack-api/use/">API利用準備</a>を参考にして入手してください。</p>
-<h2 id="3-provider-plugin">3. Provider Pluginのインストール</h2>
-<p>Provider PluginはGoバイナリです。ソースコードをダウンロードしてバイナリファイルを作成します。</p>
-<pre><code class="sh">$ mkdir -p $GOPATH/src/github.com/ezoiwana
-$ cd $GOPATH/src/github.com/ezoiwana
-$ git clone https://github.com/ezoiwana/terraform-provider-kcps
-$ cd terraform-provider-kcps
-$ go build
-</code></pre>
-
-<p><code>~/.terraformrc</code>にProvider Pluginのバイナリファイルまでのパスを設定し、プラグインの有効化を行います。以下のように編集してください。</p>
-<pre><code class="hcl">providers {
-    kcps = &quot;/path/to/terraform-provider-kcps&quot;
+                <h1 id="examples">Examples</h1>
+<p>terraform-provider-kcpsの使用例。</p>
+<h2 id="1-value-virtual-machinessh">1. Value Virtual Machineを複数台作成してSSH接続できるようにする</h2>
+<pre><code># 作成するVMの数（この値はポートフォワーディングのルールを作成する際などにも使う）
+variable count {
+    default = 2
 }
+
+# SSH接続に使用するポート
+variable ports {
+    default = {
+        public_port = 1000
+        private_port = 22
+    }
+}
+
+# SSH接続をするクライアントのグローバルIP
+variable cidr {
+    default = &quot;111.111.111.111/32&quot;
+}
+
+# 利用可能なZoneのデータを取得
+data kcps_zone ex {}
+
+# 「Ubuntu16.04」という名前のテンプレートのデータを取得する
+data kcps_template ex {
+    templatefilter = &quot;self&quot;
+    name           = &quot;Ubuntu16.04&quot;
+    zoneid         = &quot;${data.kcps_zone.ex.id}&quot;
+}
+
+# ServiceOfferingのデータを取得
+data kcps_service_offering ex {
+    name = &quot;Small1(1vCPU,Mem2GB)&quot;
+}
+
+# VMの作成
+resource kcps_value_vm ex {
+    count             = &quot;${var.count}&quot;
+    name              = &quot;example-${count.index}&quot;
+    serviceofferingid = &quot;${data.kcps_service_offering.ex.id}&quot;
+    templateid        = &quot;${data.kcps_template.ex.id}&quot;
+    zoneid            = &quot;${data.kcps_zone.ex.id}&quot;
+}
+
+# 既存のKCPSのNetwork「PublicFrontSegment」のデータを取得
+data kcps_network ex {
+    name    = &quot;PublicFrontSegment&quot;
+    zoneid = &quot;${data.kcps_zone.ex.id}&quot;
+}
+
+# 外部ネットワークからVMに接続するためのPublic IPの取得
+resource kcps_publicip ex {
+    networkid         = &quot;${data.kcps_network.ex.id}&quot;
+}
+
+# ポートフォワーディングのルールを作成
+resource kcps_nat_portforward ex {
+    count       = &quot;${var.count}&quot;
+    ipaddressid = &quot;${kcps_publicip.ex.id}&quot;
+    port {
+        privateport = &quot;${var.ports[&quot;private_port&quot;]}&quot;
+        publicport  = &quot;${var.ports[&quot;public_port&quot;] + count.index}&quot;
+    }
+    protocol         = &quot;tcp&quot;
+    virtualmachineid = &quot;${element(kcps_value_vm.ex.*.id, count.index)}&quot;
+}
+
+# Firewallのルールの作成
+resource kcps_firewall ex {
+    ipaddressid = &quot;${kcps_publicip.ex.id}&quot;
+    port {
+        startport = &quot;${var.ports[&quot;public_port&quot;]}&quot;
+        endport   = &quot;${var.ports[&quot;public_port&quot;] + var.count - 1}&quot;
+    }
+    cidrlist = [&quot;${var.cidr}&quot;]
+    protocol = &quot;tcp&quot;
+}
+
+
+# 各VMのパスワードの出力
+output vm_pass {
+    value = &quot;${join(&quot;,&quot;,kcps_value_vm.ex.*.password)}&quot;
+}
+
+# 接続先のPublic IPの出力
+output publicip {
+    value = &quot;${kcps_publicip.ex.ipaddress}&quot;
+}
+
+# VMのSSH接続に使用するポート番号の出力
+output vm_port {
+    value = &quot;${join(&quot;,&quot;,kcps_nat_portforward.ex.*.port.0.publicport)}&quot;
+}
+</code></pre>
+
+<p><code>terraform apply</code>の実行後、下記のように接続先の情報が出力されます。</p>
+<pre><code>Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+publicip = 27.85.233.140
+vm_pass = gD7yteamr,tU7uqnjyi
+vm_port = 1000,1001
+</code></pre>
+
+<p>これらの情報を使ってSSH接続を行なってみましょう。</p>
+<pre><code class="sh">$ ssh ubuntu@27.85.233.140 -p 1000
 </code></pre>
               
             </div>
@@ -272,10 +354,10 @@ $ go build
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../examples/" class="btn btn-neutral float-right" title="Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../configuration/provider/" class="btn btn-neutral float-right" title="Provider">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../installation/" class="btn btn-neutral" title="Install"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -303,10 +385,10 @@ $ go build
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../examples/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../configuration/provider/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
