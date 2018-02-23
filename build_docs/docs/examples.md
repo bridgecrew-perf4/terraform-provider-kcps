@@ -57,7 +57,7 @@ data kcps_network ex {
 
 # 外部ネットワークからVMに接続するためのPublic IPの取得
 resource kcps_publicip ex {
-    networkid         = "${data.kcps_network.ex.id}"
+    networkid = "${data.kcps_network.ex.id}"
 }
 
 # ポートフォワーディングのルールを作成
@@ -103,7 +103,7 @@ output vm_port {
 `terraform apply`の実行後、下記のように接続先の情報が出力されます。
 
 ```
-Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
 Outputs:
 
