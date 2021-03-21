@@ -1,4 +1,5 @@
 terraform {
+  required_version = "~> 0.11"
   required_providers {
     kcps = {
       version = "~> 1.0.0"
