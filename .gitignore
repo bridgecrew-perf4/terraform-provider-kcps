@@ -4,3 +4,4 @@ terraform-provider-kcps
 demo
 
 kcps/terraform.log
+provider.tf

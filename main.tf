@@ -7,12 +7,6 @@ terraform {
   }
 }
 
-provider "kcps" {
-  api_url    = "https://portal2-east.cloud-platform.kddi.ne.jp:10443/client/api"
-  api_key    = "_bALBUvMxSzLYV6Nm8W-bAJGxNUmt9pub2Xn6576bUzuQlexbnWkpFyil4nObwbh49iyrtb-cuNpUKpXJ6yXJQ"
-  secret_key = "IHJqb15_yEGyPquRhwIwv7rmk7t3kcD3Ggq5t5Ngt6o2Dmp5H1YLR_atxMnYQVNhp3MBigWMs6IqSoD5oLE3mw"
-}
-
 # 作成するVMの数（この値はポートフォワーディングのルールを作成する際などにも使う）
 variable count {
   default = 1
