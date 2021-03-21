@@ -1234,7 +1234,7 @@ type VirtualMachine struct {
 	Networkkbsread        int64             `json:"networkkbsread,omitempty"`
 	Networkkbswrite       int64             `json:"networkkbswrite,omitempty"`
 	Nics                  []Nic             `json:"nic,omitempty"`
-	Ostypeid              int64             `json:"ostypeid,omitempty"`
+	Ostypeid              string            `json:"ostypeid,omitempty"`
 	Password              string            `json:"password,omitempty"`
 	Passwordenabled       bool              `json:"passwordenabled,omitempty"`
 	Project               string            `json:"project,omitempty"`

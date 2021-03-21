@@ -141,8 +141,8 @@ func testAccCheckDataSourceKcpsVMSnapshot() resource.TestCheckFunc {
 func testAccDataSourceKcpsVMSnapshotConfig() string {
 	return fmt.Sprintf(`
 		resource kcps_vmsnapshot "a" {
-			virtualmachineid = "477b96e8-0131-40fc-aa64-27a8c08f6947"
-			displayname = "gotest"
+			virtualmachineid = "a13bb9ce-8b2e-4bc1-8b15-282c5aa944a6"
+			displayname = "example-0"
 		}
 		data "kcps_vmsnapshot" "a" {
 			vmsnapshot_id = "${kcps_vmsnapshot.a.id}"
