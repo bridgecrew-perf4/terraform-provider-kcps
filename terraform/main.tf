@@ -1,5 +1,11 @@
 terraform {
-  required_version = "~> 0.13.5"
+  required_version = ">= 0.12.7"
+  required_providers {
+    kcps = {
+      source = "hashicorp.com/prd/kcps"
+      version = "~> 1.0.0"
+    }
+  }
 }
 
 # 作成するVMの数（この値はポートフォワーディングのルールを作成する際などにも使う）
