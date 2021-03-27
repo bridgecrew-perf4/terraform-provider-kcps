@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 0.12.7"
+  required_version = "~> 0.13.5"
 }
 
 # 作成するVMの数（この値はポートフォワーディングのルールを作成する際などにも使う）
