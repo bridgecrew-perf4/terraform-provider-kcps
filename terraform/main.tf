@@ -1,5 +1,6 @@
 terraform {
   required_version = "~> 0.11"
+
   required_providers {
     kcps = {
       version = "~> 1.0.0"
@@ -23,7 +24,7 @@ variable ports {
 
 # SSH接続をするクライアントのグローバルIP
 variable cidr {
-  default = "111.111.111.111/32"
+  default = "159.28.152.155/32"
 }
 
 # 利用可能なZoneのデータを取得
