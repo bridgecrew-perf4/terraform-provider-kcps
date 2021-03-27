@@ -3,7 +3,7 @@ package kcps
 import (
 	"fmt"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	gk "github.com/uesyn/gokcps"
 )
 
@@ -88,14 +88,13 @@ func dataSourceKcpsSnapshotPolicyRead(d *schema.ResourceData, meta interface{}) 
 	return nil
 }
 
-
 // API return "intervaltype id" like "2", but we need "intervaltype" like "WEEKLY"!!!!
-func convertIntervalType(num int)string {
-	if num == 1{
+func convertIntervalType(num int) string {
+	if num == 1 {
 		return "DAILY"
-	}else if num == 2{
+	} else if num == 2 {
 		return "WEEKLY"
-	}else if num == 3{
+	} else if num == 3 {
 		return "MONTHLY"
 	}
 	return "NOT SUPORTED"

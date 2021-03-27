@@ -1,16 +1,15 @@
 terraform {
-  required_version = "~> 0.11"
+  required_version = "~> 0.12.7"
 
   required_providers {
     kcps = {
       version = "~> 1.0.0"
-      source  = "kcps.com/edu/kcps"
     }
   }
 }
 
 # 作成するVMの数（この値はポートフォワーディングのルールを作成する際などにも使う）
-variable count {
+variable _count {
   default = 1
 }
 
@@ -44,7 +43,7 @@ data kcps_service_offering ex {
 
 # VMの作成
 resource kcps_value_vm ex {
-  count             = "${var.count}"
+  count             = "${var._count}"
   name              = "example-${count.index}"
   serviceofferingid = "${data.kcps_service_offering.ex.id}"
   templateid        = "${data.kcps_template.ex.id}"
@@ -64,7 +63,7 @@ resource kcps_publicip ex {
 
 # ポートフォワーディングのルールを作成
 resource kcps_nat_portforward ex {
-  count       = "${var.count}"
+  count       = "${var._count}"
   ipaddressid = "${kcps_publicip.ex.id}"
 
   port {
@@ -82,7 +81,7 @@ resource kcps_firewall ex {
 
   port {
     startport = "${var.ports["public_port"]}"
-    endport   = "${var.ports["public_port"] + var.count - 1}"
+    endport   = "${var.ports["public_port"] + var._count - 1}"
   }
 
   cidrlist = ["${var.cidr}"]
