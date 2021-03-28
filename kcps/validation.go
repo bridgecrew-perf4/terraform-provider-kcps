@@ -27,7 +27,11 @@ func validateZone() schema.SchemaValidateFunc {
 			"jp2-east02",
 			"jp2-east03",
 			"jp2-east04",
+			"jp2-east05",
+			"jp2-east06",
 			"jp2-west01",
+			"jp2-west05",
+			"jp2-west06",
 		}
 		return nil, validateList(v, k, existZones)
 	}
@@ -41,7 +45,10 @@ func validateZoneId() schema.SchemaValidateFunc {
 			"9b295a0a-3374-4cb0-a144-88fbc1642305",
 			"593697b6-c123-4025-b412-ef83822733e5",
 			"c71ac6b8-498e-43e6-89ad-46944a67bce0",
+			"cbea12b3-2d55-4f6d-95e2-4d7a861de694",
+			"809b6bbb-df83-40a7-8748-fb7546971dfd",
 			"805c4b2c-1b62-4cc8-a3b3-eadd4076ecee",
+			"a507c381-dfca-4601-ae92-65a56335fda6",
 		}
 		return nil, validateList(v, k, existZoneIds)
 	}

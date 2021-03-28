@@ -57,6 +57,20 @@ data "kcps_network" "ex" {
   zoneid = data.kcps_zone.ex.id
 }
 
+# BackSegmentを付与する場合
+/*
+data "kcps_network" "bx" {
+  name   = "BackSegment"
+  zoneid = data.kcps_zone.ex.id
+}
+
+resource "kcps_nic" "ex" {
+  count       = var._count
+  networkid = data.kcps_network.bx.id
+  virtualmachineid = element(kcps_value_vm.ex.*.id, count.index)
+}
+*/
+
 # 外部ネットワークからVMに接続するためのPublic IPの取得
 resource "kcps_publicip" "ex" {
   networkid = data.kcps_network.ex.id
@@ -88,6 +102,7 @@ resource "kcps_firewall" "ex" {
   cidrlist = [var.cidr]
   protocol = "tcp"
 }
+
 
 # 各VMのパスワードの出力
 output "vm_pass" {

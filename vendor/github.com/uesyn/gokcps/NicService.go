@@ -584,7 +584,7 @@ type AddNicToVirtualMachineResponse struct {
 	Networkkbsread        int64             `json:"networkkbsread,omitempty"`
 	Networkkbswrite       int64             `json:"networkkbswrite,omitempty"`
 	Nic                   []Nic             `json:"nic,omitempty"`
-	Ostypeid              int64             `json:"ostypeid,omitempty"`
+	Ostypeid              string            `json:"ostypeid,omitempty"`
 	Password              string            `json:"password,omitempty"`
 	Passwordenabled       bool              `json:"passwordenabled,omitempty"`
 	Project               string            `json:"project,omitempty"`
@@ -738,7 +738,7 @@ type RemoveNicFromVirtualMachineResponse struct {
 	Networkkbsread        int64             `json:"networkkbsread,omitempty"`
 	Networkkbswrite       int64             `json:"networkkbswrite,omitempty"`
 	Nics                  []Nic             `json:"nic,omitempty"`
-	Ostypeid              int64             `json:"ostypeid,omitempty"`
+	Ostypeid              string            `json:"ostypeid,omitempty"`
 	Password              string            `json:"password,omitempty"`
 	Passwordenabled       bool              `json:"passwordenabled,omitempty"`
 	Project               string            `json:"project,omitempty"`

@@ -2,6 +2,7 @@ package test
 
 import (
 	"testing"
+	"time"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
@@ -17,9 +18,10 @@ func TestTerraformKcpsDeploy(t *testing.T) {
 	defer terraform.Destroy(t, terraformOptions)
 	terraform.InitAndApply(t, terraformOptions)
 
-	publicip := terraform.OutputMap(t, terraformOptions, "publicip")["value"]
-	vm_pass := terraform.OutputMap(t, terraformOptions, "vm_pass")["value"]
-	vm_port := terraform.OutputMap(t, terraformOptions, "vm_port")["value"]
+	publicip := terraform.Output(t, terraformOptions, "publicip")
+	vm_pass := terraform.Output(t, terraformOptions, "vm_pass")
+	vm_port := terraform.Output(t, terraformOptions, "vm_port")
 
+	time.Sleep(15 * time.Second)
 	assert.True(t, isConnect(publicip, vm_port, "root", vm_pass))
 }
