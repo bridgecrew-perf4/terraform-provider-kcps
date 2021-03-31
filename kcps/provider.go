@@ -62,6 +62,7 @@ func Provider() terraform.ResourceProvider {
 			"kcps_network":                 dataSourceKcpsNetwork(),
 			"kcps_service_offering":        dataSourceKcpsServiceOffering(),
 			"kcps_disk_offering":           dataSourceKcpsDiskOffering(),
+			"kcps_service_account":         dataSourceKcpsServiceAccount(),
 		},
 
 		ResourcesMap: map[string]*schema.Resource{

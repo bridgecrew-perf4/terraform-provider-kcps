@@ -93,7 +93,7 @@ func testAccCheckDataSourceKcpsVMSnapshot() resource.TestCheckFunc {
 		dsVMSnapshotId, _ := dsAttrs["vmsnapshot_id"]
 		if dsVMSnapshotId != rsAttrs["id"] {
 			return fmt.Errorf(
-				"expected %d , but received %d", rsAttrs["id"], dsVMSnapshotId,
+				"expected %s , but received %s", rsAttrs["id"], dsVMSnapshotId,
 			)
 		}
 
@@ -141,7 +141,7 @@ func testAccCheckDataSourceKcpsVMSnapshot() resource.TestCheckFunc {
 func testAccDataSourceKcpsVMSnapshotConfig() string {
 	return fmt.Sprintf(`
 		resource kcps_vmsnapshot "a" {
-			virtualmachineid = "a13bb9ce-8b2e-4bc1-8b15-282c5aa944a6"
+			virtualmachineid = "b28d0d22-853b-496d-8e3a-31a1bdbf2eff"
 			displayname = "example-0"
 		}
 		data "kcps_vmsnapshot" "a" {

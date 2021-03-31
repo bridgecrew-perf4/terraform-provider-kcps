@@ -10,7 +10,7 @@ import (
 func TestAccDataSourceKcpsDiskOffering(t *testing.T) {
 
 	id := "f361c03c-ed19-4228-823c-745a5569aa62"
-	name := "MIDDLE_STORAGE"
+	name := "データストレージ（MIDDLE_STORAGE）"
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:  func() { testAccPreCheck(t) },

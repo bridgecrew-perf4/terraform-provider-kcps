@@ -5,6 +5,6 @@ provider "hashicorp.com/prd/kcps" {
   version     = "1.0.0"
   constraints = "~> 1.0.0"
   hashes = [
-    "h1:RWNlZbcR5/JFwy5cPVX2Xg1IRgLYgIU/GK1L4LwYjEI=",
+    "h1:RX+PcjuURJyRkZbPZc1CXo/2amBk9KQVYR36PWhb08M=",
   ]
 }
